@@ -1,4 +1,4 @@
-from final_project_demo.analysis import add, run_analysis_pipeline
+from fbi_wanted_analysis.analysis import add, run_analysis_pipeline
 
 
 def test_run_analysis_pipeline_prints_message(capsys):

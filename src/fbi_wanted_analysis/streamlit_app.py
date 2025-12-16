@@ -8,8 +8,8 @@ from contextlib import redirect_stdout
 import pandas as pd
 import streamlit as st
 
-from final_project_demo.analysis import add, run_analysis_pipeline
-from final_project_demo.cleaning import run_cleaning_pipeling
+from fbi_wanted_analysis.analysis import add, run_analysis_pipeline
+from fbi_wanted_analysis.cleaning import run_cleaning_pipeling
 
 
 def _sample_data() -> pd.DataFrame:
