@@ -1,8 +1,9 @@
-from .analysis import run_analysis_pipeline, add
-from .cleaning import run_cleaning_pipeling
+"""fbi_wanted_analysis package."""
+
+from .analysis import fetch_current_wanted
+from .cleaning import clean_wanted
 
 __all__ = [
-    "run_analysis_pipeline",
-    "add",
-    "run_cleaning_pipeling",
+    "fetch_current_wanted",
+    "clean_wanted",
 ]
