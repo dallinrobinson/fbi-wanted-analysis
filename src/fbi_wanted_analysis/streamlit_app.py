@@ -13,17 +13,17 @@ from fbi_wanted_analysis.cleaning import clean_wanted
 
 """Streamlit app for the FBI Wanted Analysis project (STAT 386)."""
 
-"""
-RESEARCH QUESTIONS
-1. How does the quantity of most wanted cases change over time?
+# """
+# RESEARCH QUESTIONS
+# 1. How does the quantity of most wanted cases change over time?
 
-2. Which U.S regions, states, or FBI field offices have the highest concentration of wanted cases? 
-How has this distribution shifted historically?
+# 2. Which U.S regions, states, or FBI field offices have the highest concentration of wanted cases? 
+# How has this distribution shifted historically?
 
-3. What types of crimes receive the highest reward amounts?
+# 3. What types of crimes receive the highest reward amounts?
 
-4. What do trends in rewards and quantity of wanted persons reveal about law enforcement priorities?
-"""
+# 4. What do trends in rewards and quantity of wanted persons reveal about law enforcement priorities?
+# """
 
 
 def _get_unique_subjects(series: pd.Series) -> list[str]:
