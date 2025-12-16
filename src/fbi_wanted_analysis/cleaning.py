@@ -1,4 +1,5 @@
 from __future__ import annotations
+from fbi_wanted_analysis.rewards import parse_reward
 
 import pandas as pd
 
@@ -13,6 +14,10 @@ def clean_wanted(df: pd.DataFrame) -> pd.DataFrame:
         df["field_offices"] = df["field_offices"].apply(
             lambda x: ", ".join(x) if isinstance(x, list) else (x if pd.notna(x) else "")
         )
+
+    if "reward_text" in df.columns:
+        parsed = df["reward_text"].apply(parse_reward).apply(pd.Series)
+        df = pd.concat([df, parsed], axis=1)
 
     return df
 
