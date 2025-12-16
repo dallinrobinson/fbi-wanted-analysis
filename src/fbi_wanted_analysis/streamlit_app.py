@@ -1,11 +1,28 @@
 """Streamlit app for the FBI Wanted Analysis project (STAT 386)."""
 
+"""
+RESEARCH QUESTIONS
+1. How does the quantity of most wanted cases change over time?
+
+2. Which U.S regions, states, or FBI field offices have the highest concentration of wanted cases? 
+How has this distribution shifted historically?
+
+3. What types of crimes receive the highest reward amounts?
+
+4. What do trends in rewards and quantity of wanted persons reveal about law enforcement priorities?
+"""
+
 from __future__ import annotations
 
 import pandas as pd
 import streamlit as st
 
-from fbi_wanted_analysis.analysis import fetch_current_wanted
+from fbi_wanted_analysis.analysis import (
+    fetch_current_wanted,
+    quantity_over_time,
+    geographic_concentration_over_time,
+    reward_by_crime_type,
+)
 from fbi_wanted_analysis.cleaning import clean_wanted
 
 
