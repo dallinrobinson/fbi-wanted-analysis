@@ -1,33 +1,79 @@
 ---
-title: "Technical Report"
-description: "Project summary, methodology, and findings placeholder"
+title: "Technical Report: FBI Wanted Analysis"
+description: "Analysis of trends, geographic concentration, and reward structures in FBI Wanted listings"
 ---
 
 ## Executive Summary
 
-_TODO: Provide a concise overview of the project objectives, key findings, and actionable recommendations._
+This project analyzes publicly available data from the FBI Wanted API to examine patterns in active wanted-person listings. The analysis focuses on four research questions: how the quantity of wanted cases changes over time, which geographic areas have the highest concentration of cases, which types of crimes receive the largest rewards, and what the joint trends in case counts and rewards reveal about law enforcement priorities. Using a reproducible Python-based pipeline and an interactive Streamlit dashboard, the results suggest that reward size reflects case severity and strategic importance rather than case volume alone, while geographic concentration varies substantially across FBI field offices.
+
+---
 
 ## Project Context
 
-_TODO: Describe the motivation, stakeholders, and success criteria for this analysis._
+The FBI Wanted list serves as a public-facing tool for enlisting assistance in locating individuals associated with serious federal crimes. Understanding how listings are distributed across time, geography, and crime type provides insight into enforcement priorities and resource allocation. Stakeholders for this analysis include policymakers, researchers, and the general public interested in crime patterns and federal enforcement strategy. Success is measured by producing transparent, reproducible summaries that accurately reflect the structure and limitations of the underlying data.
+
+---
 
 ## Data Sources
 
-- _Primary dataset:_ `TODO - name and link`
-- _Supplementary data:_ `TODO - describe any external references`
-- _Data access notes:_ `TODO - mention licenses or refresh cadence`
+- **Primary dataset:**  
+  FBI Wanted API  
+  https://api.fbi.gov/wanted/v1/list
+
+- **Supplementary data:**  
+  None (analysis relies solely on fields provided by the FBI API)
+
+- **Data access notes:**  
+  The API provides current active listings only and does not expose historical snapshots of the wanted list. As a result, analyses of historical change rely on publication dates or require externally stored snapshots for true longitudinal analysis. There is no API key required for access.
+
+---
 
 ## Methodology
 
-1. _Data acquisition:_ `TODO - outline collection scripts/APIs`
-2. _Cleaning pipeline:_ `TODO - summarize transformations and validations implemented`
-3. _Analysis workflow:_ `TODO - describe statistical or modeling techniques`
-4. _Tooling:_ `TODO - list packages, environments, and reproducibility steps`
+1. **Data acquisition**  
+   Data are retrieved programmatically using HTTP requests to the FBI Wanted API. Pagination is handled to collect multiple pages of results in a single pull. Our process creates 22 pages of data.
+
+2. **Cleaning pipeline**  
+   Raw JSON responses are normalized into a tabular format. Relevant fields (e.g., publication date, field office, subjects, reward text) are retained, dates are parsed into datetime objects, and reward information is extracted into numeric indicators where possible.
+
+3. **Analysis workflow**  
+   - *Quantity over time:* Listings are aggregated by publication month and year to describe when currently active cases were posted.  
+   - *Geographic concentration:* Listings are grouped by FBI field office and summarized using counts and shares of total listings.  There are many entries with no field office associated.
+   - *Crime type and rewards:* Listings with numeric reward amounts are exploded by subject tags and summarized using median, mean, and maximum rewards.  
+   - *Priority interpretation:* Joint patterns in listing counts and reward magnitudes are used to infer enforcement focus and case severity.
+
+4. **Tooling**  
+   - Python (pandas, requests) for data processing  
+   - Streamlit for interactive visualization  
+   - Git/GitHub for version control and reproducibility  
+   - Virtual environment for dependency management  
+
+![FBI Wanted Analysis – Data Processing Sequence](diagrams_images/data_pipeline.png){fig-cap="FBI Wanted Analysis data processing sequence from API pull to Streamlit dashboard." fig-alt="Flowchart of FBI Wanted Analysis data processing sequence." width="85%"}
+
+---
 
 ## Results & Diagnostics
 
-_TODO: Summarize the main metrics, charts, or model diagnostics produced. Include links to figures or tables once available._
+The analysis shows that:
+
+- Publication dates of active listings cluster in certain periods, indicating bursts of new postings rather than a steady flow.
+
+- A small number of FBI field offices account for a disproportionately large share of active wanted cases.
+
+- There are a large number of fugitives with no associated field office, this is because they are international, elusive, or their crimes cross multiples jurisdictions. 
+
+- Crime types related to terrorism, violent crime, and national security receive substantially higher median reward amounts than other categories.
+
+- Higher rewards are not associated with a larger number of cases, suggesting that reward size reflects case severity and difficulty rather than frequency.
+
+All summary tables and figures are generated directly from the cleaned dataset and displayed in the Streamlit dashboard.
+
+---
 
 ## Discussion & Next Steps
 
-_TODO: Interpret the results, note limitations, and capture open questions or future experiments._
+These findings suggest that FBI reward structures emphasize prioritization of high-risk or high-impact cases rather than broad coverage. However, the analysis is limited by the lack of historical snapshots of the wanted list; true longitudinal conclusions about changes in enforcement focus require archived or regularly collected snapshots over time. Future work could incorporate Wayback Machine data or scheduled data collection to enable a fully historical analysis, as well as external data sources to contextualize findings by population or crime rates.
+
+---
+
