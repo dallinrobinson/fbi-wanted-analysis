@@ -344,7 +344,7 @@ def main() -> None:
         st.markdown("**By subject (primary tag)**")
         try:
             subj = rq4_priority_by_subject(filtered, top_n=15)
-            st.dataframe(subj, use_container_width=True)
+            st.dataframe(subj.reset_index(drop=True), use_container_width=True)
         except Exception as e:
             st.info(f"Not available: {e}")
 
@@ -352,7 +352,7 @@ def main() -> None:
         st.markdown("**By reward program**")
         try:
             prog = rq4_priority_by_program(filtered)
-            st.dataframe(prog, use_container_width=True)
+            st.dataframe(prog.reset_index(drop=True), use_container_width=True)
         except Exception as e:
             st.info(f"Not available: {e}")
 
@@ -360,7 +360,7 @@ def main() -> None:
         st.markdown("**By field office**")
         try:
             fo = rq4_priority_by_field_office(filtered, top_n=15)
-            st.dataframe(fo, use_container_width=True)
+            st.dataframe(fo.reset_index(drop=True), use_container_width=True)
         except Exception as e:
             st.info(f"Not available: {e}")
 
