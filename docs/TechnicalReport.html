@@ -180,7 +180,7 @@ https://api.fbi.gov/wanted/v1/list</p></li>
 <li><p><strong>Supplementary data:</strong><br>
 None (analysis relies solely on fields provided by the FBI API)</p></li>
 <li><p><strong>Data access notes:</strong><br>
-The API provides current active listings only and does not expose historical snapshots of the wanted list. As a result, analyses of historical change rely on publication dates or require externally stored snapshots for true longitudinal analysis. There is no API key required for access.</p></li>
+The API provides current active listings only and does not expose historical snapshots of the wanted list. As a result, analyses of historical change rely on publication dates or require externally stored snapshots for true longitudinal analysis. There is no API key required for access. See the tutorial for additional details on how to access the package and documentation for explanation of all code.</p></li>
 </ul>
 <hr>
 </section>
@@ -188,7 +188,7 @@ The API provides current active listings only and does not expose historical sna
 <h2 class="anchored" data-anchor-id="methodology">Methodology</h2>
 <ol type="1">
 <li><p><strong>Data acquisition</strong><br>
-Data are retrieved programmatically using HTTP requests to the FBI Wanted API. Pagination is handled to collect multiple pages of results in a single pull. Our process creates 22 pages of data.</p></li>
+Data are retrieved programmatically using HTTP requests to the FBI Wanted API. Pagination is handled to collect multiple pages of results in a single pull. The process for this data creates 22 pages.</p></li>
 <li><p><strong>Cleaning pipeline</strong><br>
 Raw JSON responses are normalized into a tabular format. Relevant fields (e.g., publication date, field office, subjects, reward text) are retained, dates are parsed into datetime objects, and reward information is extracted into numeric indicators where possible.</p></li>
 <li><p><strong>Analysis workflow</strong></p>
@@ -234,7 +234,7 @@ Raw JSON responses are normalized into a tabular format. Relevant fields (e.g., 
 </section>
 <section id="discussion-next-steps" class="level2">
 <h2 class="anchored" data-anchor-id="discussion-next-steps">Discussion &amp; Next Steps</h2>
-<p>These findings suggest that FBI reward structures emphasize prioritization of high-risk or high-impact cases rather than broad coverage. However, the analysis is limited by the lack of historical snapshots of the wanted list; true longitudinal conclusions about changes in enforcement focus require archived or regularly collected snapshots over time. Future work could incorporate Wayback Machine data or scheduled data collection to enable a fully historical analysis, as well as external data sources to contextualize findings by population or crime rates. For this project, usage of the Wayback Machine was considered, however, it was deemed too challenging to implement in an efficient way for a Stat386 student. The process of scraping data was achievable, but it would require manual entries of the URLs for each fugitive rather than the utilizing the pagination system used in the API data gathering.</p>
+<p>These findings suggest that FBI reward structures emphasize prioritization of high-risk or high-impact cases rather than broad coverage. However, the analysis is limited by the lack of historical snapshots of the wanted list; true longitudinal conclusions about changes in enforcement focus require archived or regularly collected snapshots over time. Future work could incorporate Wayback Machine data or scheduled data collection to enable a fully historical analysis, as well as external data sources to contextualize findings by population or crime rates. For this project, usage of the Wayback Machine was considered, however, it was deemed too challenging to implement in an efficient way for a Stat386 student. The process of scraping data was achievable, but it would require manual entries of the URLs for each fugitive rather than the utilizing the pagination system used in the API data gathering. Achieving data acquisition through the Wayback Machine would be the next step in a more thorough analysis into the changes in the Wanted list over time.</p>
 <hr>
 
 
