@@ -272,7 +272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="first-import-and-basic-usage" class="level2">
 <h2 class="anchored" data-anchor-id="first-import-and-basic-usage">3. First import and basic usage</h2>
 <p>Start by importing from the top-level package and pulling a small sample.</p>
-<div id="b9675b76" class="cell" data-execution_count="1">
+<div id="c3f75903" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fbi_wanted_analysis <span class="im">import</span> fetch_current_wanted, clean_wanted</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Pull the first page of results (50 records)</span></span>
@@ -285,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>You should see something like <code>(N, K)</code> where <code>N</code> is the number of rows and <code>K</code> is the number of columns.</p>
 <p>Inspect the first few rows:</p>
-<div id="39996fa5" class="cell" data-execution_count="2">
+<div id="25402428" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>raw.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
@@ -402,7 +402,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Normalizes <code>field_offices</code> into a consistent string</li>
 <li>Parses <code>reward_text</code> into numeric and categorical fields using <code>parse_reward</code> from <code>rewards.py</code></li>
 </ul>
-<div id="92235a1f" class="cell" data-execution_count="3">
+<div id="168bbb30" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>clean <span class="op">=</span> clean_wanted(raw)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>clean.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -564,7 +564,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>reward_program</code> (for example: <code>"FBI"</code>, <code>"Rewards for Justice"</code>, <code>"Other/Unknown"</code>)</li>
 </ul>
 <p>You can quickly check the distribution of reward programs:</p>
-<div id="48bf3650" class="cell" data-execution_count="4">
+<div id="18467612" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>clean[<span class="st">"reward_program"</span>].value_counts().head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>reward_program
@@ -580,7 +580,7 @@ Name: count, dtype: int64</code></pre>
 <section id="analysis-helpers-and-research-questions" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-helpers-and-research-questions">5. Analysis helpers and research questions</h2>
 <p>To run the analysis helpers, import them from the <code>analysis</code> module.</p>
-<div id="7652d79e" class="cell" data-execution_count="5">
+<div id="2453de95" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fbi_wanted_analysis.analysis <span class="im">import</span> (</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    quantity_over_time,</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    geographic_concentration_over_time,</span>
@@ -593,7 +593,7 @@ Name: count, dtype: int64</code></pre>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Below we assume you already have a cleaned <code>DataFrame</code> named <code>clean</code>.</p>
-<div id="45d0ee7a" class="cell" data-execution_count="6">
+<div id="f6cb7c7c" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>clean <span class="op">=</span> clean_wanted(fetch_current_wanted(page_size<span class="op">=</span><span class="dv">200</span>, pages<span class="op">=</span><span class="dv">3</span>))</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>clean.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
@@ -604,7 +604,7 @@ Name: count, dtype: int64</code></pre>
 <h3 class="anchored" data-anchor-id="rq1-volume-trend-over-time">5.1 RQ1: Volume trend over time</h3>
 <p><strong>Research Question 1</strong> &gt; How does the quantity of most wanted cases change over time?</p>
 <p>Simplest option: you can use <code>rq4_volume_trend</code> on the publication date, aggregated by month.</p>
-<div id="075da19a" class="cell" data-execution_count="7">
+<div id="1d1f9380" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>volume <span class="op">=</span> rq4_volume_trend(clean, date_col<span class="op">=</span><span class="st">"publication"</span>, freq<span class="op">=</span><span class="st">"M"</span>)</span>
@@ -663,7 +663,7 @@ Name: count, dtype: int64</code></pre>
 <li><code>listings</code>: number of listings in that period</li>
 </ul>
 <p>Plot it:</p>
-<div id="7bb37abf" class="cell" data-execution_count="8">
+<div id="9a1606f8" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>plt.plot(volume[<span class="st">"period"</span>], volume[<span class="st">"listings"</span>])</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
@@ -687,7 +687,7 @@ Name: count, dtype: int64</code></pre>
 <p><strong>Research Question 2</strong> &gt; Which U.S. regions, states, or FBI field offices have the highest concentration of wanted cases, and how has this distribution shifted historically?</p>
 <p>The <code>analysis.py</code> module includes a general helper, <code>geographic_concentration_over_time</code>, that expects a <code>snapshot_date</code> column and a geography column such as <code>field_office</code> or <code>state</code>. For simple work with the current pull, it is often easiest to summarize field offices directly from the cleaned data.</p>
 <p>Because <code>clean_wanted</code> stores <code>field_offices</code> as a comma separated string, you can split and explode it to count offices.</p>
-<div id="aa11a560" class="cell" data-execution_count="9">
+<div id="f4c7255d" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>geo_df <span class="op">=</span> clean.copy()</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Split comma separated field_offices into rows</span></span>
@@ -720,7 +720,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <p>You can also combine this with time information by grouping on both <code>publication</code> and <code>field_offices_list</code> if you want a time series for each office.</p>
-<div id="365b9603" class="cell" data-execution_count="10">
+<div id="7135166e" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>geo_df[<span class="st">"publication_month"</span>] <span class="op">=</span> geo_df[<span class="st">"publication"</span>].dt.to_period(<span class="st">"M"</span>).dt.to_timestamp()</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>office_time <span class="op">=</span> (</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    geo_df.groupby([<span class="st">"publication_month"</span>, <span class="st">"field_offices_list"</span>])[<span class="st">"uid"</span>]</span>
@@ -785,7 +785,7 @@ Name: count, dtype: int64</code></pre>
 <h3 class="anchored" data-anchor-id="rq3-reward-amounts-by-crime-type">5.3 RQ3: Reward amounts by crime type</h3>
 <p><strong>Research Question 3</strong> &gt; What types of crimes receive the highest reward amounts?</p>
 <p>Use <code>reward_by_crime_type</code> on the cleaned data.</p>
-<div id="0d3fb061" class="cell" data-execution_count="11">
+<div id="4cc52572" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>rq3 <span class="op">=</span> reward_by_crime_type(clean)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>rq3.head(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
@@ -899,7 +899,7 @@ Name: count, dtype: int64</code></pre>
 <li><code>listings</code>: number of listings that contributed to that row</li>
 </ul>
 <p>Look at the top crime types by median reward:</p>
-<div id="024e5263" class="cell" data-execution_count="12">
+<div id="0d63d9ea" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>rq3_top <span class="op">=</span> rq3.sort_values(<span class="st">"median_reward"</span>, ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">15</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>rq3_top</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
@@ -1045,7 +1045,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <p>Plot the top crime types:</p>
-<div id="13e97069" class="cell" data-execution_count="13">
+<div id="aab9dae3" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>plt.barh(rq3_top[<span class="st">"crime_type"</span>], rq3_top[<span class="st">"median_reward"</span>])</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>plt.gca().invert_yaxis()</span>
@@ -1075,7 +1075,7 @@ Name: count, dtype: int64</code></pre>
 </ul>
 <section id="reward-trend-over-time" class="level4">
 <h4 class="anchored" data-anchor-id="reward-trend-over-time">5.4.1 Reward trend over time</h4>
-<div id="2624ab8b" class="cell" data-execution_count="14">
+<div id="6198c908" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>reward_trend <span class="op">=</span> rq4_reward_trend(clean, date_col<span class="op">=</span><span class="st">"publication"</span>, freq<span class="op">=</span><span class="st">"M"</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>reward_trend.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
@@ -1167,7 +1167,7 @@ Name: count, dtype: int64</code></pre>
 <li><code>max_reward_max_usd</code></li>
 </ul>
 <p>You can plot both prevalence and size.</p>
-<div id="4169d7e6" class="cell" data-execution_count="15">
+<div id="3465ee24" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>plt.plot(reward_trend[<span class="st">"period"</span>], reward_trend[<span class="st">"pct_with_reward_text"</span>], label<span class="op">=</span><span class="st">"Reward text present"</span>)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>plt.plot(reward_trend[<span class="st">"period"</span>], reward_trend[<span class="st">"pct_with_numeric_reward"</span>], label<span class="op">=</span><span class="st">"Numeric reward present"</span>)</span>
@@ -1184,7 +1184,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<div id="4ca15e8d" class="cell" data-execution_count="16">
+<div id="29f40f8d" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>plt.plot(reward_trend[<span class="st">"period"</span>], reward_trend[<span class="st">"median_reward_max_usd"</span>], label<span class="op">=</span><span class="st">"Median"</span>)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>plt.plot(reward_trend[<span class="st">"period"</span>], reward_trend[<span class="st">"p90_reward_max_usd"</span>], label<span class="op">=</span><span class="st">"P90"</span>)</span>
@@ -1206,7 +1206,7 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="priority-by-subject" class="level4">
 <h4 class="anchored" data-anchor-id="priority-by-subject">5.4.2 Priority by subject</h4>
-<div id="4328e969" class="cell" data-execution_count="17">
+<div id="045ff395" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>priority_subject <span class="op">=</span> rq4_priority_by_subject(clean, top_n<span class="op">=</span><span class="dv">15</span>)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>priority_subject</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
@@ -1346,7 +1346,7 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="priority-by-program" class="level4">
 <h4 class="anchored" data-anchor-id="priority-by-program">5.4.3 Priority by program</h4>
-<div id="3332d0ff" class="cell" data-execution_count="18">
+<div id="93c059f5" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>priority_program <span class="op">=</span> rq4_priority_by_program(clean)</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>priority_program</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
@@ -1420,7 +1420,7 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="priority-by-field-office" class="level4">
 <h4 class="anchored" data-anchor-id="priority-by-field-office">5.4.4 Priority by field office</h4>
-<div id="4a456432" class="cell" data-execution_count="19">
+<div id="8cdc35b2" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>priority_office <span class="op">=</span> rq4_priority_by_field_office(clean, top_n<span class="op">=</span><span class="dv">15</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>priority_office</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
