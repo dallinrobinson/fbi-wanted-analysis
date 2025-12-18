@@ -147,9 +147,11 @@ def reward_by_crime_type(df: pd.DataFrame) -> pd.DataFrame:
         max_reward
         listings
     """
+    if "subjects" not in df.columns:
+        return pd.DataFrame(columns=["crime_type", "median_reward", "mean_reward", "max_reward", "listings"])
 
-    # Keep only listings with numeric rewards
-    rewards = df[df["reward_has_amount"].fillna(False)].copy()
+    # Work on a copy
+    rewards = df.copy()
 
     # Drop rows without subjects
     rewards = rewards.dropna(subset=["subjects"])
@@ -164,6 +166,9 @@ def reward_by_crime_type(df: pd.DataFrame) -> pd.DataFrame:
     # Avoid double-counting the same listing within a subject
     rewards = rewards.drop_duplicates(["uid", "subjects"])
 
+    # Ensure reward_amount_max_usd is numeric; rows with no numeric reward will get NaN
+    rewards["reward_amount_max_usd"] = pd.to_numeric(rewards.get("reward_amount_max_usd"), errors="coerce")
+
     # Aggregate reward statistics by crime type
     out = (
         rewards.groupby("subjects")["reward_amount_max_usd"]
@@ -173,10 +178,12 @@ def reward_by_crime_type(df: pd.DataFrame) -> pd.DataFrame:
             max_reward="max",
             listings="count",
         )
-        .sort_values("median_reward", ascending=False)
         .reset_index()
         .rename(columns={"subjects": "crime_type"})
     )
+
+    # Sort with higher median reward first, then by listings
+    out = out.sort_values(["median_reward", "listings"], ascending=[False, False])
 
     return out
 

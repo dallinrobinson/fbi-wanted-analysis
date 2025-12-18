@@ -61,7 +61,10 @@ def parse_reward(reward_text: Any) -> dict[str, Any]:
 
     has_text = bool(txt)
     is_up_to = "up to" in txt.lower()
-    mentions_additional = "additional reward" in txt.lower()
+    low = txt.lower()
+    is_up_to = "up to" in low
+    mentions_additional = "additional reward" in low or "additional " in low
+
 
     amounts: list[int] = []
     for m in _AMOUNT_RE.finditer(txt):

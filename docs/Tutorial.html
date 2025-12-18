@@ -272,7 +272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="first-import-and-basic-usage" class="level2">
 <h2 class="anchored" data-anchor-id="first-import-and-basic-usage">3. First import and basic usage</h2>
 <p>Start by importing from the top-level package and pulling a small sample.</p>
-<div id="fa6e2ed5" class="cell" data-execution_count="1">
+<div id="7bba5a2e" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fbi_wanted_analysis <span class="im">import</span> fetch_current_wanted, clean_wanted</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Pull the first page of results (50 records)</span></span>
@@ -285,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>You should see something like <code>(N, K)</code> where <code>N</code> is the number of rows and <code>K</code> is the number of columns.</p>
 <p>Inspect the first few rows:</p>
-<div id="94617f0a" class="cell" data-execution_count="2">
+<div id="ed068ce3" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>raw.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
@@ -402,7 +402,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Normalizes <code>field_offices</code> into a consistent string</li>
 <li>Parses <code>reward_text</code> into numeric and categorical fields using <code>parse_reward</code> from <code>rewards.py</code></li>
 </ul>
-<div id="62dc2949" class="cell" data-execution_count="3">
+<div id="3cf329e2" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>clean <span class="op">=</span> clean_wanted(raw)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>clean.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -564,7 +564,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>reward_program</code> (for example: <code>"FBI"</code>, <code>"Rewards for Justice"</code>, <code>"Other/Unknown"</code>)</li>
 </ul>
 <p>You can quickly check the distribution of reward programs:</p>
-<div id="9badc1d4" class="cell" data-execution_count="4">
+<div id="395d4c9c" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>clean[<span class="st">"reward_program"</span>].value_counts().head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>reward_program
@@ -580,7 +580,7 @@ Name: count, dtype: int64</code></pre>
 <section id="analysis-helpers-and-research-questions" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-helpers-and-research-questions">5. Analysis helpers and research questions</h2>
 <p>To run the analysis helpers, import them from the <code>analysis</code> module.</p>
-<div id="b8515b68" class="cell" data-execution_count="5">
+<div id="0d2c9773" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fbi_wanted_analysis.analysis <span class="im">import</span> (</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    quantity_over_time,</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    geographic_concentration_over_time,</span>
@@ -593,7 +593,7 @@ Name: count, dtype: int64</code></pre>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Below we assume you already have a cleaned <code>DataFrame</code> named <code>clean</code>.</p>
-<div id="91756851" class="cell" data-execution_count="6">
+<div id="cb5607d4" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>clean <span class="op">=</span> clean_wanted(fetch_current_wanted(page_size<span class="op">=</span><span class="dv">200</span>, pages<span class="op">=</span><span class="dv">3</span>))</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>clean.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
@@ -604,13 +604,13 @@ Name: count, dtype: int64</code></pre>
 <h3 class="anchored" data-anchor-id="rq1-volume-trend-over-time">5.1 RQ1: Volume trend over time</h3>
 <p><strong>Research Question 1</strong> &gt; How does the quantity of most wanted cases change over time?</p>
 <p>Simplest option: you can use <code>rq4_volume_trend</code> on the publication date, aggregated by month.</p>
-<div id="e31dd0a4" class="cell" data-execution_count="7">
+<div id="eb3cd6f7" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>volume <span class="op">=</span> rq4_volume_trend(clean, date_col<span class="op">=</span><span class="st">"publication"</span>, freq<span class="op">=</span><span class="st">"M"</span>)</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>volume.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/Users/dallinrobinson/School/stat386/fbi-wanted-analysis/src/fbi_wanted_analysis/analysis.py:206: UserWarning: Converting to PeriodArray/Index representation will drop timezone information.
+<pre><code>/Users/dallinrobinson/School/stat386/fbi-wanted-analysis/src/fbi_wanted_analysis/analysis.py:213: UserWarning: Converting to PeriodArray/Index representation will drop timezone information.
   out["period"] = dt.dt.to_period(freq).dt.to_timestamp()</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="7">
@@ -663,7 +663,7 @@ Name: count, dtype: int64</code></pre>
 <li><code>listings</code>: number of listings in that period</li>
 </ul>
 <p>Plot it:</p>
-<div id="0784d9b3" class="cell" data-execution_count="8">
+<div id="625f86a1" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>plt.plot(volume[<span class="st">"period"</span>], volume[<span class="st">"listings"</span>])</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
@@ -687,7 +687,7 @@ Name: count, dtype: int64</code></pre>
 <p><strong>Research Question 2</strong> &gt; Which U.S. regions, states, or FBI field offices have the highest concentration of wanted cases, and how has this distribution shifted historically?</p>
 <p>The <code>analysis.py</code> module includes a general helper, <code>geographic_concentration_over_time</code>, that expects a <code>snapshot_date</code> column and a geography column such as <code>field_office</code> or <code>state</code>. For simple work with the current pull, it is often easiest to summarize field offices directly from the cleaned data.</p>
 <p>Because <code>clean_wanted</code> stores <code>field_offices</code> as a comma separated string, you can split and explode it to count offices.</p>
-<div id="7ec6ad69" class="cell" data-execution_count="9">
+<div id="bad14674" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>geo_df <span class="op">=</span> clean.copy()</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Split comma separated field_offices into rows</span></span>
@@ -720,7 +720,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <p>You can also combine this with time information by grouping on both <code>publication</code> and <code>field_offices_list</code> if you want a time series for each office.</p>
-<div id="3f0ce5c0" class="cell" data-execution_count="10">
+<div id="bcabe834" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>geo_df[<span class="st">"publication_month"</span>] <span class="op">=</span> geo_df[<span class="st">"publication"</span>].dt.to_period(<span class="st">"M"</span>).dt.to_timestamp()</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>office_time <span class="op">=</span> (</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    geo_df.groupby([<span class="st">"publication_month"</span>, <span class="st">"field_offices_list"</span>])[<span class="st">"uid"</span>]</span>
@@ -785,7 +785,7 @@ Name: count, dtype: int64</code></pre>
 <h3 class="anchored" data-anchor-id="rq3-reward-amounts-by-crime-type">5.3 RQ3: Reward amounts by crime type</h3>
 <p><strong>Research Question 3</strong> &gt; What types of crimes receive the highest reward amounts?</p>
 <p>Use <code>reward_by_crime_type</code> on the cleaned data.</p>
-<div id="42a589de" class="cell" data-execution_count="11">
+<div id="be779875" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>rq3 <span class="op">=</span> reward_by_crime_type(clean)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>rq3.head(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
@@ -805,84 +805,84 @@ Name: count, dtype: int64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<th data-quarto-table-cell-role="th">2</th>
 <td>Counterintelligence</td>
 <td>15000000.0</td>
+<td>1.500000e+07</td>
 <td>15000000.0</td>
-<td>15000000</td>
 <td>2</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<th data-quarto-table-cell-role="th">12</th>
 <td>Most Wanted Terrorists</td>
 <td>5000000.0</td>
-<td>4227777.777778</td>
-<td>5000000</td>
+<td>4.227778e+06</td>
+<td>5000000.0</td>
 <td>18</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<th data-quarto-table-cell-role="th">15</th>
 <td>Ten Most Wanted Fugitives</td>
 <td>5000000.0</td>
-<td>3750000.0</td>
-<td>10000000</td>
+<td>3.750000e+06</td>
+<td>10000000.0</td>
 <td>9</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<th data-quarto-table-cell-role="th">5</th>
 <td>Cyber's Most Wanted</td>
 <td>3500000.0</td>
-<td>4750000.0</td>
-<td>10000000</td>
+<td>4.750000e+06</td>
+<td>10000000.0</td>
 <td>4</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<th data-quarto-table-cell-role="th">1</th>
 <td>Case of the Week</td>
 <td>250000.0</td>
+<td>2.500000e+05</td>
 <td>250000.0</td>
-<td>250000</td>
 <td>1</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">5</th>
+<th data-quarto-table-cell-role="th">0</th>
 <td>Additional Violent Crimes</td>
 <td>25000.0</td>
-<td>421000.0</td>
-<td>2000000</td>
+<td>4.210000e+05</td>
+<td>2000000.0</td>
 <td>5</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">6</th>
+<th data-quarto-table-cell-role="th">20</th>
 <td>Violent Crimes - Murders</td>
 <td>25000.0</td>
+<td>2.500000e+04</td>
 <td>25000.0</td>
-<td>25000</td>
 <td>1</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">7</th>
+<th data-quarto-table-cell-role="th">19</th>
 <td>Violent Crime - Murders</td>
 <td>22500.0</td>
-<td>22500.0</td>
-<td>30000</td>
+<td>2.250000e+04</td>
+<td>30000.0</td>
 <td>4</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">8</th>
+<th data-quarto-table-cell-role="th">11</th>
 <td>Law Enforcement Assistance</td>
 <td>20000.0</td>
-<td>16666.666667</td>
-<td>25000</td>
+<td>1.666667e+04</td>
+<td>25000.0</td>
 <td>3</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">9</th>
-<td>Criminal Enterprise Investigations</td>
+<th data-quarto-table-cell-role="th">13</th>
+<td>Seeking Information</td>
 <td>17500.0</td>
-<td>17500.0</td>
-<td>25000</td>
-<td>2</td>
+<td>2.309375e+04</td>
+<td>100000.0</td>
+<td>16</td>
 </tr>
 </tbody>
 </table>
@@ -899,7 +899,7 @@ Name: count, dtype: int64</code></pre>
 <li><code>listings</code>: number of listings that contributed to that row</li>
 </ul>
 <p>Look at the top crime types by median reward:</p>
-<div id="447e3358" class="cell" data-execution_count="12">
+<div id="aace988c" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>rq3_top <span class="op">=</span> rq3.sort_values(<span class="st">"median_reward"</span>, ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">15</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>rq3_top</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
@@ -919,123 +919,123 @@ Name: count, dtype: int64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<th data-quarto-table-cell-role="th">2</th>
 <td>Counterintelligence</td>
 <td>15000000.0</td>
+<td>1.500000e+07</td>
 <td>15000000.0</td>
-<td>15000000</td>
 <td>2</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<th data-quarto-table-cell-role="th">12</th>
 <td>Most Wanted Terrorists</td>
 <td>5000000.0</td>
-<td>4227777.777778</td>
-<td>5000000</td>
+<td>4.227778e+06</td>
+<td>5000000.0</td>
 <td>18</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<th data-quarto-table-cell-role="th">15</th>
 <td>Ten Most Wanted Fugitives</td>
 <td>5000000.0</td>
-<td>3750000.0</td>
-<td>10000000</td>
+<td>3.750000e+06</td>
+<td>10000000.0</td>
 <td>9</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<th data-quarto-table-cell-role="th">5</th>
 <td>Cyber's Most Wanted</td>
 <td>3500000.0</td>
-<td>4750000.0</td>
-<td>10000000</td>
+<td>4.750000e+06</td>
+<td>10000000.0</td>
 <td>4</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<th data-quarto-table-cell-role="th">1</th>
 <td>Case of the Week</td>
 <td>250000.0</td>
+<td>2.500000e+05</td>
 <td>250000.0</td>
-<td>250000</td>
 <td>1</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">5</th>
+<th data-quarto-table-cell-role="th">0</th>
 <td>Additional Violent Crimes</td>
 <td>25000.0</td>
-<td>421000.0</td>
-<td>2000000</td>
+<td>4.210000e+05</td>
+<td>2000000.0</td>
 <td>5</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">6</th>
+<th data-quarto-table-cell-role="th">20</th>
 <td>Violent Crimes - Murders</td>
 <td>25000.0</td>
+<td>2.500000e+04</td>
 <td>25000.0</td>
-<td>25000</td>
 <td>1</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">7</th>
+<th data-quarto-table-cell-role="th">19</th>
 <td>Violent Crime - Murders</td>
 <td>22500.0</td>
-<td>22500.0</td>
-<td>30000</td>
+<td>2.250000e+04</td>
+<td>30000.0</td>
 <td>4</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">8</th>
+<th data-quarto-table-cell-role="th">11</th>
 <td>Law Enforcement Assistance</td>
 <td>20000.0</td>
-<td>16666.666667</td>
-<td>25000</td>
+<td>1.666667e+04</td>
+<td>25000.0</td>
 <td>3</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">9</th>
-<td>Criminal Enterprise Investigations</td>
-<td>17500.0</td>
-<td>17500.0</td>
-<td>25000</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">10</th>
+<th data-quarto-table-cell-role="th">13</th>
 <td>Seeking Information</td>
 <td>17500.0</td>
-<td>23093.75</td>
-<td>100000</td>
+<td>2.309375e+04</td>
+<td>100000.0</td>
 <td>16</td>
 </tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">11</th>
-<td>Crimes Against Children</td>
-<td>10000.0</td>
-<td>10000.0</td>
-<td>10000</td>
-<td>1</td>
-</tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">12</th>
-<td>Indian Country</td>
-<td>10000.0</td>
-<td>19166.666667</td>
-<td>75000</td>
-<td>6</td>
+<th data-quarto-table-cell-role="th">4</th>
+<td>Criminal Enterprise Investigations</td>
+<td>17500.0</td>
+<td>1.750000e+04</td>
+<td>25000.0</td>
+<td>2</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">13</th>
+<th data-quarto-table-cell-role="th">9</th>
 <td>Kidnappings and Missing Persons</td>
 <td>10000.0</td>
-<td>847500.0</td>
-<td>5000000</td>
+<td>8.475000e+05</td>
+<td>5000000.0</td>
 <td>12</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">14</th>
+<th data-quarto-table-cell-role="th">8</th>
+<td>Indian Country</td>
+<td>10000.0</td>
+<td>1.916667e+04</td>
+<td>75000.0</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Crimes Against Children</td>
+<td>10000.0</td>
+<td>1.000000e+04</td>
+<td>10000.0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">23</th>
 <td>White-Collar Crime</td>
 <td>10000.0</td>
+<td>1.000000e+04</td>
 <td>10000.0</td>
-<td>10000</td>
 <td>1</td>
 </tr>
 </tbody>
@@ -1045,7 +1045,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <p>Plot the top crime types:</p>
-<div id="a0010fc2" class="cell" data-execution_count="13">
+<div id="18bcc81d" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>plt.barh(rq3_top[<span class="st">"crime_type"</span>], rq3_top[<span class="st">"median_reward"</span>])</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>plt.gca().invert_yaxis()</span>
@@ -1075,11 +1075,11 @@ Name: count, dtype: int64</code></pre>
 </ul>
 <section id="reward-trend-over-time" class="level4">
 <h4 class="anchored" data-anchor-id="reward-trend-over-time">5.4.1 Reward trend over time</h4>
-<div id="60263e64" class="cell" data-execution_count="14">
+<div id="2afef848" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>reward_trend <span class="op">=</span> rq4_reward_trend(clean, date_col<span class="op">=</span><span class="st">"publication"</span>, freq<span class="op">=</span><span class="st">"M"</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>reward_trend.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/Users/dallinrobinson/School/stat386/fbi-wanted-analysis/src/fbi_wanted_analysis/analysis.py:206: UserWarning: Converting to PeriodArray/Index representation will drop timezone information.
+<pre><code>/Users/dallinrobinson/School/stat386/fbi-wanted-analysis/src/fbi_wanted_analysis/analysis.py:213: UserWarning: Converting to PeriodArray/Index representation will drop timezone information.
   out["period"] = dt.dt.to_period(freq).dt.to_timestamp()</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="14">
@@ -1167,7 +1167,7 @@ Name: count, dtype: int64</code></pre>
 <li><code>max_reward_max_usd</code></li>
 </ul>
 <p>You can plot both prevalence and size.</p>
-<div id="eb823c5a" class="cell" data-execution_count="15">
+<div id="06bfa4e3" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>plt.plot(reward_trend[<span class="st">"period"</span>], reward_trend[<span class="st">"pct_with_reward_text"</span>], label<span class="op">=</span><span class="st">"Reward text present"</span>)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>plt.plot(reward_trend[<span class="st">"period"</span>], reward_trend[<span class="st">"pct_with_numeric_reward"</span>], label<span class="op">=</span><span class="st">"Numeric reward present"</span>)</span>
@@ -1184,7 +1184,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<div id="4110b1df" class="cell" data-execution_count="16">
+<div id="48689182" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>plt.plot(reward_trend[<span class="st">"period"</span>], reward_trend[<span class="st">"median_reward_max_usd"</span>], label<span class="op">=</span><span class="st">"Median"</span>)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>plt.plot(reward_trend[<span class="st">"period"</span>], reward_trend[<span class="st">"p90_reward_max_usd"</span>], label<span class="op">=</span><span class="st">"P90"</span>)</span>
@@ -1206,7 +1206,7 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="priority-by-subject" class="level4">
 <h4 class="anchored" data-anchor-id="priority-by-subject">5.4.2 Priority by subject</h4>
-<div id="d16a4cd0" class="cell" data-execution_count="17">
+<div id="30214950" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>priority_subject <span class="op">=</span> rq4_priority_by_subject(clean, top_n<span class="op">=</span><span class="dv">15</span>)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>priority_subject</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
@@ -1346,7 +1346,7 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="priority-by-program" class="level4">
 <h4 class="anchored" data-anchor-id="priority-by-program">5.4.3 Priority by program</h4>
-<div id="c540a60a" class="cell" data-execution_count="18">
+<div id="2acb5445" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>priority_program <span class="op">=</span> rq4_priority_by_program(clean)</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>priority_program</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
@@ -1420,7 +1420,7 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="priority-by-field-office" class="level4">
 <h4 class="anchored" data-anchor-id="priority-by-field-office">5.4.4 Priority by field office</h4>
-<div id="3d012468" class="cell" data-execution_count="19">
+<div id="77b8da60" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>priority_office <span class="op">=</span> rq4_priority_by_field_office(clean, top_n<span class="op">=</span><span class="dv">15</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>priority_office</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
