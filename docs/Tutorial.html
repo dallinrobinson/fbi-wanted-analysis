@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Getting Started – website</title>
+<title>Getting Started with fbi_wanted_analysis – website</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,7 +17,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -67,14 +67,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -102,6 +103,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -114,6 +118,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">website</span>
     </a>
@@ -125,17 +131,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html">
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
-  </li>
+  </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Documentation.html">
+    <a class="nav-link" href="./Documentation.html"> 
 <span class="menu-text">Documentation</span></a>
-  </li>
+  </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./Tutorial.html" aria-current="page">
+    <a class="nav-link active" href="./Tutorial.html" aria-current="page"> 
 <span class="menu-text">Tutorial</span></a>
-  </li>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./TechnicalReport.html"> 
+<span class="menu-text">Technical Report</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -147,52 +157,1461 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#installation" id="toc-installation" class="nav-link active" data-scroll-target="#installation">1. Installation</a>
+  <ul class="collapse">
+  <li><a href="#install-with-uv" id="toc-install-with-uv" class="nav-link" data-scroll-target="#install-with-uv">1.1 Install with <code>uv</code></a></li>
+  <li><a href="#install-with-pip" id="toc-install-with-pip" class="nav-link" data-scroll-target="#install-with-pip">1.2 Install with <code>pip</code></a></li>
+  </ul></li>
+  <li><a href="#package-overview" id="toc-package-overview" class="nav-link" data-scroll-target="#package-overview">2. Package overview</a></li>
+  <li><a href="#first-import-and-basic-usage" id="toc-first-import-and-basic-usage" class="nav-link" data-scroll-target="#first-import-and-basic-usage">3. First import and basic usage</a></li>
+  <li><a href="#cleaning-and-reward-parsing" id="toc-cleaning-and-reward-parsing" class="nav-link" data-scroll-target="#cleaning-and-reward-parsing">4. Cleaning and reward parsing</a></li>
+  <li><a href="#analysis-helpers-and-research-questions" id="toc-analysis-helpers-and-research-questions" class="nav-link" data-scroll-target="#analysis-helpers-and-research-questions">5. Analysis helpers and research questions</a>
+  <ul class="collapse">
+  <li><a href="#rq1-volume-trend-over-time" id="toc-rq1-volume-trend-over-time" class="nav-link" data-scroll-target="#rq1-volume-trend-over-time">5.1 RQ1: Volume trend over time</a></li>
+  <li><a href="#rq2-geographic-concentration" id="toc-rq2-geographic-concentration" class="nav-link" data-scroll-target="#rq2-geographic-concentration">5.2 RQ2: Geographic concentration</a></li>
+  <li><a href="#rq3-reward-amounts-by-crime-type" id="toc-rq3-reward-amounts-by-crime-type" class="nav-link" data-scroll-target="#rq3-reward-amounts-by-crime-type">5.3 RQ3: Reward amounts by crime type</a></li>
+  <li><a href="#rq4-trends-in-rewards-and-inferred-priorities" id="toc-rq4-trends-in-rewards-and-inferred-priorities" class="nav-link" data-scroll-target="#rq4-trends-in-rewards-and-inferred-priorities">5.4 RQ4: Trends in rewards and inferred priorities</a></li>
+  </ul></li>
+  <li><a href="#using-the-package-with-the-streamlit-app" id="toc-using-the-package-with-the-streamlit-app" class="nav-link" data-scroll-target="#using-the-package-with-the-streamlit-app">6. Using the package with the Streamlit app</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">7. Summary</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Getting Started</h1>
+<h1 class="title">Getting Started with fbi_wanted_analysis</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-
-
-
+    
+  
+    
   </div>
-
+  
 
 
 </header>
 
 
-<p>Here is how you use my package:</p>
-<div id="b07029ab" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> final_project_demo <span class="im">import</span> add</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(add(<span class="dv">2</span>, <span class="dv">19</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>21</code></pre>
-</div>
-</div>
-<div id="b7ba431a" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> final_project_demo <span class="im">import</span> run_analysis_pipeline, run_cleaning_pipeling</span>
+<p>This tutorial walks you through how to install <code>fbi_wanted_analysis</code>, pull live data from the FBI Wanted API, clean it, and run the core analysis functions that answer the four research questions for the project.</p>
+<p>We will:</p>
+<ol type="1">
+<li>Install the package</li>
+<li>Pull and inspect raw data</li>
+<li>Clean and enrich the data (including reward parsing)</li>
+<li>Run research question helper functions</li>
+<li>See how this connects to the Streamlit app</li>
+</ol>
+<hr>
+<section id="installation" class="level2">
+<h2 class="anchored" data-anchor-id="installation">1. Installation</h2>
+<p>You can install the package either with <code>uv</code> or with <code>pip</code>, depending on your workflow.</p>
+<section id="install-with-uv" class="level3">
+<h3 class="anchored" data-anchor-id="install-with-uv">1.1 Install with <code>uv</code></h3>
+<p>From a terminal in your project folder:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add fbi-wanted-analysis</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>uv</code> will resolve and install:</p>
+<ul>
+<li><code>fbi-wanted-analysis</code></li>
+<li><code>pandas</code></li>
+<li><code>numpy</code></li>
+<li><code>requests</code></li>
+<li><code>streamlit</code></li>
+<li>and other dependencies</li>
+</ul>
+</section>
+<section id="install-with-pip" class="level3">
+<h3 class="anchored" data-anchor-id="install-with-pip">1.2 Install with <code>pip</code></h3>
+<p>If you prefer <code>pip</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install fbi-wanted-analysis</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Then you are ready to import the package in Python or Jupyter.</p>
+<hr>
+</section>
+</section>
+<section id="package-overview" class="level2">
+<h2 class="anchored" data-anchor-id="package-overview">2. Package overview</h2>
+<p>The package has three main modules:</p>
+<ul>
+<li><code>fbi_wanted_analysis.__init__</code>
+<ul>
+<li>Re-exports the most important entry points:
+<ul>
+<li><code>fetch_current_wanted</code></li>
+<li><code>clean_wanted</code></li>
+</ul></li>
+</ul></li>
+<li><code>fbi_wanted_analysis.cleaning</code>
+<ul>
+<li>Functions to clean and normalize the raw FBI API data</li>
+<li>Applies reward parsing from <code>rewards.py</code></li>
+</ul></li>
+<li><code>fbi_wanted_analysis.analysis</code>
+<ul>
+<li>Functions for answering the four research questions using pandas</li>
+</ul></li>
+</ul>
+<p>The core workflow:</p>
+<ol type="1">
+<li>Use <code>fetch_current_wanted()</code> to call the FBI Wanted API and return a raw <code>DataFrame</code>.</li>
+<li>Pass that <code>DataFrame</code> into <code>clean_wanted()</code> to add parsed reward fields and normalize columns.</li>
+<li>Use the analysis helpers from <code>analysis.py</code> to create summary tables for each research question.</li>
+</ol>
+<hr>
+</section>
+<section id="first-import-and-basic-usage" class="level2">
+<h2 class="anchored" data-anchor-id="first-import-and-basic-usage">3. First import and basic usage</h2>
+<p>Start by importing from the top-level package and pulling a small sample.</p>
+<div id="78a9c935" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fbi_wanted_analysis <span class="im">import</span> fetch_current_wanted, clean_wanted</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>run_cleaning_pipeling()</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>run_analysis_pipeline()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Running cleaning pipeline...
-Running analysis pipeline...</code></pre>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Pull the first page of results (50 records)</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>raw <span class="op">=</span> fetch_current_wanted(page_size<span class="op">=</span><span class="dv">50</span>, pages<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>raw.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>(50, 10)</code></pre>
 </div>
 </div>
+<p>You should see something like <code>(N, K)</code> where <code>N</code> is the number of rows and <code>K</code> is the number of columns.</p>
+<p>Inspect the first few rows:</p>
+<div id="2dbc2f42" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>raw.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
 
 
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">field_offices</th>
+<th data-quarto-table-cell-role="th">details</th>
+<th data-quarto-table-cell-role="th">caution</th>
+<th data-quarto-table-cell-role="th">title</th>
+<th data-quarto-table-cell-role="th">race</th>
+<th data-quarto-table-cell-role="th">publication</th>
+<th data-quarto-table-cell-role="th">subjects</th>
+<th data-quarto-table-cell-role="th">reward_text</th>
+<th data-quarto-table-cell-role="th">uid</th>
+<th data-quarto-table-cell-role="th">sex</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>[lasvegas]</td>
+<td>&lt;p&gt;The Federal Bureau of Investigation's Las V...</td>
+<td>None</td>
+<td>DEFACEMENT OF FEDERAL PROPERTY</td>
+<td>None</td>
+<td>2025-06-25T09:42:00</td>
+<td>[Seeking Information]</td>
+<td>The FBI is offering a reward of up to $1,000 f...</td>
+<td>07f33176ac684ec19ac5a2794bdf196f</td>
+<td>None</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>[louisville]</td>
+<td>None</td>
+<td>&lt;p&gt;Terry Matthews is wanted for his alleged in...</td>
+<td>TERRY MATTHEWS</td>
+<td>black</td>
+<td>2025-07-02T08:03:00</td>
+<td>[Criminal Enterprise Investigations]</td>
+<td>None</td>
+<td>de4766a45bf4435bb3303b6da7d1febb</td>
+<td>Male</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>None</td>
+<td>&lt;p&gt;In June of 2021, Celeste Doghmi was reporte...</td>
+<td>None</td>
+<td>CELESTE DIANA DOGHMI - AUBURN, MAINE</td>
+<td>None</td>
+<td>2025-07-02T07:26:00</td>
+<td>[ViCAP Missing Persons]</td>
+<td>None</td>
+<td>5126982a11c6494fa53fb44d54c56206</td>
+<td>Female</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>[miami]</td>
+<td>None</td>
+<td>&lt;p&gt;Vitel'Homme Innocent, as leader of the gang...</td>
+<td>VITEL'HOMME INNOCENT</td>
+<td>black</td>
+<td>2022-11-03T10:49:00</td>
+<td>[Additional Violent Crimes]</td>
+<td>The United States Department of State’s Transn...</td>
+<td>466379d55d804fdeabfc3944c5d44331</td>
+<td>Male</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>[dallas]</td>
+<td>None</td>
+<td>&lt;p&gt;Cindy Rodriguez Singh is wanted for alleged...</td>
+<td>CINDY RODRIGUEZ SINGH</td>
+<td>hispanic</td>
+<td>2024-07-11T13:11:00</td>
+<td>[Ten Most Wanted Fugitives, Case of the Week]</td>
+<td>The FBI is offering a reward of up to $250,000...</td>
+<td>fa908b7efed64603b9f95efa0288643f</td>
+<td>Female</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>The raw <code>DataFrame</code> includes columns such as:</p>
+<ul>
+<li><code>uid</code></li>
+<li><code>title</code></li>
+<li><code>publication</code> (string or timestamp)</li>
+<li><code>field_offices</code></li>
+<li><code>sex</code></li>
+<li><code>race</code></li>
+<li><code>subjects</code></li>
+<li><code>reward_text</code></li>
+<li><code>caution</code></li>
+<li><code>details</code></li>
+</ul>
+<hr>
+</section>
+<section id="cleaning-and-reward-parsing" class="level2">
+<h2 class="anchored" data-anchor-id="cleaning-and-reward-parsing">4. Cleaning and reward parsing</h2>
+<p>Next, run the cleaning pipeline. This function:</p>
+<ul>
+<li>Converts <code>publication</code> into a proper datetime</li>
+<li>Normalizes <code>field_offices</code> into a consistent string</li>
+<li>Parses <code>reward_text</code> into numeric and categorical fields using <code>parse_reward</code> from <code>rewards.py</code></li>
+</ul>
+<div id="b60b0679" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>clean <span class="op">=</span> clean_wanted(raw)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>clean.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">field_offices</th>
+<th data-quarto-table-cell-role="th">details</th>
+<th data-quarto-table-cell-role="th">caution</th>
+<th data-quarto-table-cell-role="th">title</th>
+<th data-quarto-table-cell-role="th">race</th>
+<th data-quarto-table-cell-role="th">publication</th>
+<th data-quarto-table-cell-role="th">subjects</th>
+<th data-quarto-table-cell-role="th">reward_text</th>
+<th data-quarto-table-cell-role="th">uid</th>
+<th data-quarto-table-cell-role="th">sex</th>
+<th data-quarto-table-cell-role="th">reward_text_clean</th>
+<th data-quarto-table-cell-role="th">reward_has_text</th>
+<th data-quarto-table-cell-role="th">reward_has_amount</th>
+<th data-quarto-table-cell-role="th">reward_amounts_usd</th>
+<th data-quarto-table-cell-role="th">reward_amount_min_usd</th>
+<th data-quarto-table-cell-role="th">reward_amount_max_usd</th>
+<th data-quarto-table-cell-role="th">reward_is_up_to</th>
+<th data-quarto-table-cell-role="th">reward_mentions_additional</th>
+<th data-quarto-table-cell-role="th">reward_program</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>lasvegas</td>
+<td>&lt;p&gt;The Federal Bureau of Investigation's Las V...</td>
+<td>None</td>
+<td>DEFACEMENT OF FEDERAL PROPERTY</td>
+<td>None</td>
+<td>2025-06-25 09:42:00</td>
+<td>[Seeking Information]</td>
+<td>The FBI is offering a reward of up to $1,000 f...</td>
+<td>07f33176ac684ec19ac5a2794bdf196f</td>
+<td>None</td>
+<td>The FBI is offering a reward of up to $1,000 f...</td>
+<td>True</td>
+<td>True</td>
+<td>[1000]</td>
+<td>1000</td>
+<td>1000</td>
+<td>True</td>
+<td>False</td>
+<td>FBI</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>louisville</td>
+<td>None</td>
+<td>&lt;p&gt;Terry Matthews is wanted for his alleged in...</td>
+<td>TERRY MATTHEWS</td>
+<td>black</td>
+<td>2025-07-02 08:03:00</td>
+<td>[Criminal Enterprise Investigations]</td>
+<td>None</td>
+<td>de4766a45bf4435bb3303b6da7d1febb</td>
+<td>Male</td>
+<td></td>
+<td>False</td>
+<td>False</td>
+<td>[]</td>
+<td>&lt;NA&gt;</td>
+<td>&lt;NA&gt;</td>
+<td>False</td>
+<td>False</td>
+<td>Other/Unknown</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td></td>
+<td>&lt;p&gt;In June of 2021, Celeste Doghmi was reporte...</td>
+<td>None</td>
+<td>CELESTE DIANA DOGHMI - AUBURN, MAINE</td>
+<td>None</td>
+<td>2025-07-02 07:26:00</td>
+<td>[ViCAP Missing Persons]</td>
+<td>None</td>
+<td>5126982a11c6494fa53fb44d54c56206</td>
+<td>Female</td>
+<td></td>
+<td>False</td>
+<td>False</td>
+<td>[]</td>
+<td>&lt;NA&gt;</td>
+<td>&lt;NA&gt;</td>
+<td>False</td>
+<td>False</td>
+<td>Other/Unknown</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>miami</td>
+<td>None</td>
+<td>&lt;p&gt;Vitel'Homme Innocent, as leader of the gang...</td>
+<td>VITEL'HOMME INNOCENT</td>
+<td>black</td>
+<td>2022-11-03 10:49:00</td>
+<td>[Additional Violent Crimes]</td>
+<td>The United States Department of State’s Transn...</td>
+<td>466379d55d804fdeabfc3944c5d44331</td>
+<td>Male</td>
+<td>The United States Department of State’s Transn...</td>
+<td>True</td>
+<td>True</td>
+<td>[2000000]</td>
+<td>2000000</td>
+<td>2000000</td>
+<td>True</td>
+<td>False</td>
+<td>State Department</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>dallas</td>
+<td>None</td>
+<td>&lt;p&gt;Cindy Rodriguez Singh is wanted for alleged...</td>
+<td>CINDY RODRIGUEZ SINGH</td>
+<td>hispanic</td>
+<td>2024-07-11 13:11:00</td>
+<td>[Ten Most Wanted Fugitives, Case of the Week]</td>
+<td>The FBI is offering a reward of up to $250,000...</td>
+<td>fa908b7efed64603b9f95efa0288643f</td>
+<td>Female</td>
+<td>The FBI is offering a reward of up to $250,000...</td>
+<td>True</td>
+<td>True</td>
+<td>[250000]</td>
+<td>250000</td>
+<td>250000</td>
+<td>True</td>
+<td>False</td>
+<td>FBI</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>After cleaning, you should see additional columns such as:</p>
+<ul>
+<li><code>reward_text_clean</code></li>
+<li><code>reward_has_text</code> (True/False)</li>
+<li><code>reward_has_amount</code> (True/False)</li>
+<li><code>reward_amounts_usd</code> (list of ints)</li>
+<li><code>reward_amount_min_usd</code> (int or NA)</li>
+<li><code>reward_amount_max_usd</code> (int or NA)</li>
+<li><code>reward_is_up_to</code> (True/False)</li>
+<li><code>reward_mentions_additional</code> (True/False)</li>
+<li><code>reward_program</code> (for example: <code>"FBI"</code>, <code>"Rewards for Justice"</code>, <code>"Other/Unknown"</code>)</li>
+</ul>
+<p>You can quickly check the distribution of reward programs:</p>
+<div id="de468f7a" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>clean[<span class="st">"reward_program"</span>].value_counts().head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>reward_program
+FBI                    26
+Other/Unknown          21
+State Department        2
+Rewards for Justice     1
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="analysis-helpers-and-research-questions" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-helpers-and-research-questions">5. Analysis helpers and research questions</h2>
+<p>To run the analysis helpers, import them from the <code>analysis</code> module.</p>
+<div id="e375289a" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fbi_wanted_analysis.analysis <span class="im">import</span> (</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    quantity_over_time,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    geographic_concentration_over_time,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    reward_by_crime_type,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    rq4_volume_trend,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    rq4_reward_trend,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    rq4_priority_by_subject,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    rq4_priority_by_program,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    rq4_priority_by_field_office,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Below we assume you already have a cleaned <code>DataFrame</code> named <code>clean</code>.</p>
+<div id="21d5fc2c" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>clean <span class="op">=</span> clean_wanted(fetch_current_wanted(page_size<span class="op">=</span><span class="dv">200</span>, pages<span class="op">=</span><span class="dv">3</span>))</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>clean.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>(150, 19)</code></pre>
+</div>
+</div>
+<section id="rq1-volume-trend-over-time" class="level3">
+<h3 class="anchored" data-anchor-id="rq1-volume-trend-over-time">5.1 RQ1: Volume trend over time</h3>
+<p><strong>Research Question 1</strong> &gt; How does the quantity of most wanted cases change over time?</p>
+<p>Simplest option: you can use <code>rq4_volume_trend</code> on the publication date, aggregated by month.</p>
+<div id="2648f287" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>volume <span class="op">=</span> rq4_volume_trend(clean, date_col<span class="op">=</span><span class="st">"publication"</span>, freq<span class="op">=</span><span class="st">"M"</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>volume.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/dallinrobinson/School/stat386/fbi-wanted-analysis/src/fbi_wanted_analysis/analysis.py:206: UserWarning: Converting to PeriodArray/Index representation will drop timezone information.
+  out["period"] = dt.dt.to_period(freq).dt.to_timestamp()</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">period</th>
+<th data-quarto-table-cell-role="th">listings</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2010-07-01</td>
+<td>11</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2010-08-01</td>
+<td>15</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>2010-09-01</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>2010-10-01</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>2012-03-01</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Columns:</p>
+<ul>
+<li><code>period</code>: start of the period (for example, first day of the month)</li>
+<li><code>listings</code>: number of listings in that period</li>
+</ul>
+<p>Plot it:</p>
+<div id="9f1c7c49" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>plt.plot(volume[<span class="st">"period"</span>], volume[<span class="st">"listings"</span>])</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Listings"</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Number of FBI Wanted Listings Over Time"</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Tutorial_files/figure-html/cell-9-output-1.png" width="661" height="470" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This gives a quick visual of whether the posting volume is stable, rising, or clustered in specific months.</p>
+<p>If you want to work directly with snapshots and a <code>snapshot_date</code> column, you can also use <code>quantity_over_time()</code> instead of <code>rq4_volume_trend()</code> as long as your data frame includes that column.</p>
+<hr>
+</section>
+<section id="rq2-geographic-concentration" class="level3">
+<h3 class="anchored" data-anchor-id="rq2-geographic-concentration">5.2 RQ2: Geographic concentration</h3>
+<p><strong>Research Question 2</strong> &gt; Which U.S. regions, states, or FBI field offices have the highest concentration of wanted cases, and how has this distribution shifted historically?</p>
+<p>The <code>analysis.py</code> module includes a general helper, <code>geographic_concentration_over_time</code>, that expects a <code>snapshot_date</code> column and a geography column such as <code>field_office</code> or <code>state</code>. For simple work with the current pull, it is often easiest to summarize field offices directly from the cleaned data.</p>
+<p>Because <code>clean_wanted</code> stores <code>field_offices</code> as a comma separated string, you can split and explode it to count offices.</p>
+<div id="ba524d86" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>geo_df <span class="op">=</span> clean.copy()</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Split comma separated field_offices into rows</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>geo_df[<span class="st">"field_offices_list"</span>] <span class="op">=</span> geo_df[<span class="st">"field_offices"</span>].fillna(<span class="st">""</span>).astype(<span class="bu">str</span>).<span class="bu">str</span>.split(<span class="st">","</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>geo_df <span class="op">=</span> geo_df.explode(<span class="st">"field_offices_list"</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>geo_df[<span class="st">"field_offices_list"</span>] <span class="op">=</span> geo_df[<span class="st">"field_offices_list"</span>].<span class="bu">str</span>.strip()</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>geo_df <span class="op">=</span> geo_df[geo_df[<span class="st">"field_offices_list"</span>] <span class="op">!=</span> <span class="st">""</span>]</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Top offices by count</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>top_offices <span class="op">=</span> geo_df[<span class="st">"field_offices_list"</span>].value_counts().head(<span class="dv">15</span>)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>top_offices</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>field_offices_list
+washingtondc    20
+losangeles      17
+miami            8
+sanfrancisco     6
+newyork          5
+philadelphia     5
+chicago          4
+seattle          4
+tampa            4
+houston          4
+indianapolis     3
+sacramento       3
+minneapolis      3
+buffalo          3
+neworleans       3
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+<p>You can also combine this with time information by grouping on both <code>publication</code> and <code>field_offices_list</code> if you want a time series for each office.</p>
+<div id="9306dd58" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>geo_df[<span class="st">"publication_month"</span>] <span class="op">=</span> geo_df[<span class="st">"publication"</span>].dt.to_period(<span class="st">"M"</span>).dt.to_timestamp()</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>office_time <span class="op">=</span> (</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    geo_df.groupby([<span class="st">"publication_month"</span>, <span class="st">"field_offices_list"</span>])[<span class="st">"uid"</span>]</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    .nunique()</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    .reset_index(name<span class="op">=</span><span class="st">"listings"</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>office_time.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">publication_month</th>
+<th data-quarto-table-cell-role="th">field_offices_list</th>
+<th data-quarto-table-cell-role="th">listings</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2010-07-01</td>
+<td>newyork</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2010-07-01</td>
+<td>washingtondc</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>2010-08-01</td>
+<td>buffalo</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>2010-08-01</td>
+<td>chicago</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>2010-08-01</td>
+<td>jackson</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>You can then filter to a specific office of interest and plot its trend over time.</p>
+<hr>
+</section>
+<section id="rq3-reward-amounts-by-crime-type" class="level3">
+<h3 class="anchored" data-anchor-id="rq3-reward-amounts-by-crime-type">5.3 RQ3: Reward amounts by crime type</h3>
+<p><strong>Research Question 3</strong> &gt; What types of crimes receive the highest reward amounts?</p>
+<p>Use <code>reward_by_crime_type</code> on the cleaned data.</p>
+<div id="d1885592" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>rq3 <span class="op">=</span> reward_by_crime_type(clean)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>rq3.head(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">crime_type</th>
+<th data-quarto-table-cell-role="th">median_reward</th>
+<th data-quarto-table-cell-role="th">mean_reward</th>
+<th data-quarto-table-cell-role="th">max_reward</th>
+<th data-quarto-table-cell-role="th">listings</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Counterintelligence</td>
+<td>15000000.0</td>
+<td>15000000.0</td>
+<td>15000000</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Most Wanted Terrorists</td>
+<td>5000000.0</td>
+<td>4227777.777778</td>
+<td>5000000</td>
+<td>18</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Ten Most Wanted Fugitives</td>
+<td>5000000.0</td>
+<td>3750000.0</td>
+<td>10000000</td>
+<td>9</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Cyber's Most Wanted</td>
+<td>3500000.0</td>
+<td>4750000.0</td>
+<td>10000000</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>Case of the Week</td>
+<td>250000.0</td>
+<td>250000.0</td>
+<td>250000</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>Additional Violent Crimes</td>
+<td>25000.0</td>
+<td>421000.0</td>
+<td>2000000</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">6</th>
+<td>Violent Crimes - Murders</td>
+<td>25000.0</td>
+<td>25000.0</td>
+<td>25000</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">7</th>
+<td>Violent Crime - Murders</td>
+<td>22500.0</td>
+<td>22500.0</td>
+<td>30000</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">8</th>
+<td>Law Enforcement Assistance</td>
+<td>20000.0</td>
+<td>16666.666667</td>
+<td>25000</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">9</th>
+<td>Criminal Enterprise Investigations</td>
+<td>17500.0</td>
+<td>17500.0</td>
+<td>25000</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>This returns:</p>
+<ul>
+<li><code>crime_type</code>: FBI subject tag</li>
+<li><code>median_reward</code>: median of <code>reward_amount_max_usd</code></li>
+<li><code>mean_reward</code>: mean of <code>reward_amount_max_usd</code></li>
+<li><code>max_reward</code>: maximum of <code>reward_amount_max_usd</code></li>
+<li><code>listings</code>: number of listings that contributed to that row</li>
+</ul>
+<p>Look at the top crime types by median reward:</p>
+<div id="f24d3e18" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>rq3_top <span class="op">=</span> rq3.sort_values(<span class="st">"median_reward"</span>, ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">15</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>rq3_top</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">crime_type</th>
+<th data-quarto-table-cell-role="th">median_reward</th>
+<th data-quarto-table-cell-role="th">mean_reward</th>
+<th data-quarto-table-cell-role="th">max_reward</th>
+<th data-quarto-table-cell-role="th">listings</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Counterintelligence</td>
+<td>15000000.0</td>
+<td>15000000.0</td>
+<td>15000000</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Most Wanted Terrorists</td>
+<td>5000000.0</td>
+<td>4227777.777778</td>
+<td>5000000</td>
+<td>18</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Ten Most Wanted Fugitives</td>
+<td>5000000.0</td>
+<td>3750000.0</td>
+<td>10000000</td>
+<td>9</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Cyber's Most Wanted</td>
+<td>3500000.0</td>
+<td>4750000.0</td>
+<td>10000000</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>Case of the Week</td>
+<td>250000.0</td>
+<td>250000.0</td>
+<td>250000</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>Additional Violent Crimes</td>
+<td>25000.0</td>
+<td>421000.0</td>
+<td>2000000</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">6</th>
+<td>Violent Crimes - Murders</td>
+<td>25000.0</td>
+<td>25000.0</td>
+<td>25000</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">7</th>
+<td>Violent Crime - Murders</td>
+<td>22500.0</td>
+<td>22500.0</td>
+<td>30000</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">8</th>
+<td>Law Enforcement Assistance</td>
+<td>20000.0</td>
+<td>16666.666667</td>
+<td>25000</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">9</th>
+<td>Criminal Enterprise Investigations</td>
+<td>17500.0</td>
+<td>17500.0</td>
+<td>25000</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">10</th>
+<td>Seeking Information</td>
+<td>17500.0</td>
+<td>23093.75</td>
+<td>100000</td>
+<td>16</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">11</th>
+<td>Crimes Against Children</td>
+<td>10000.0</td>
+<td>10000.0</td>
+<td>10000</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">12</th>
+<td>Indian Country</td>
+<td>10000.0</td>
+<td>19166.666667</td>
+<td>75000</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">13</th>
+<td>Kidnappings and Missing Persons</td>
+<td>10000.0</td>
+<td>847500.0</td>
+<td>5000000</td>
+<td>12</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">14</th>
+<td>White-Collar Crime</td>
+<td>10000.0</td>
+<td>10000.0</td>
+<td>10000</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Plot the top crime types:</p>
+<div id="57e60e7d" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>plt.barh(rq3_top[<span class="st">"crime_type"</span>], rq3_top[<span class="st">"median_reward"</span>])</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>plt.gca().invert_yaxis()</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Median Reward (USD)"</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Top Crime Types by Median Reward"</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Tutorial_files/figure-html/cell-14-output-1.png" width="660" height="470" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This gives a direct view of which subject tags tend to be associated with higher rewards.</p>
+<hr>
+</section>
+<section id="rq4-trends-in-rewards-and-inferred-priorities" class="level3">
+<h3 class="anchored" data-anchor-id="rq4-trends-in-rewards-and-inferred-priorities">5.4 RQ4: Trends in rewards and inferred priorities</h3>
+<p><strong>Research Question 4</strong> &gt; What do trends in rewards and quantity of wanted persons reveal about law enforcement priorities?</p>
+<p>For this question the package includes several helper functions that look at:</p>
+<ul>
+<li>Overall volume of listings over time</li>
+<li>How often rewards are offered</li>
+<li>How large those rewards are</li>
+<li>Where higher rewards cluster (by subject, by program, by field office)</li>
+</ul>
+<section id="reward-trend-over-time" class="level4">
+<h4 class="anchored" data-anchor-id="reward-trend-over-time">5.4.1 Reward trend over time</h4>
+<div id="4b6454eb" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>reward_trend <span class="op">=</span> rq4_reward_trend(clean, date_col<span class="op">=</span><span class="st">"publication"</span>, freq<span class="op">=</span><span class="st">"M"</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>reward_trend.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/dallinrobinson/School/stat386/fbi-wanted-analysis/src/fbi_wanted_analysis/analysis.py:206: UserWarning: Converting to PeriodArray/Index representation will drop timezone information.
+  out["period"] = dt.dt.to_period(freq).dt.to_timestamp()</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">period</th>
+<th data-quarto-table-cell-role="th">listings</th>
+<th data-quarto-table-cell-role="th">pct_with_reward_text</th>
+<th data-quarto-table-cell-role="th">pct_with_numeric_reward</th>
+<th data-quarto-table-cell-role="th">median_reward_max_usd</th>
+<th data-quarto-table-cell-role="th">p90_reward_max_usd</th>
+<th data-quarto-table-cell-role="th">max_reward_max_usd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2010-07-01</td>
+<td>11</td>
+<td>100.000000</td>
+<td>100.000000</td>
+<td>5000000.0</td>
+<td>5000000.0</td>
+<td>5000000.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2010-08-01</td>
+<td>15</td>
+<td>33.333333</td>
+<td>26.666667</td>
+<td>5000000.0</td>
+<td>5000000.0</td>
+<td>5000000.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>2010-09-01</td>
+<td>3</td>
+<td>66.666667</td>
+<td>33.333333</td>
+<td>50000.0</td>
+<td>50000.0</td>
+<td>50000.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>2010-10-01</td>
+<td>1</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>2012-03-01</td>
+<td>2</td>
+<td>50.000000</td>
+<td>50.000000</td>
+<td>50000.0</td>
+<td>50000.0</td>
+<td>50000.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Columns include:</p>
+<ul>
+<li><code>period</code></li>
+<li><code>listings</code></li>
+<li><code>pct_with_reward_text</code></li>
+<li><code>pct_with_numeric_reward</code></li>
+<li><code>median_reward_max_usd</code></li>
+<li><code>p90_reward_max_usd</code></li>
+<li><code>max_reward_max_usd</code></li>
+</ul>
+<p>You can plot both prevalence and size.</p>
+<div id="43d6d38e" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>plt.plot(reward_trend[<span class="st">"period"</span>], reward_trend[<span class="st">"pct_with_reward_text"</span>], label<span class="op">=</span><span class="st">"Reward text present"</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>plt.plot(reward_trend[<span class="st">"period"</span>], reward_trend[<span class="st">"pct_with_numeric_reward"</span>], label<span class="op">=</span><span class="st">"Numeric reward present"</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Percent of listings"</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Reward Prevalence Over Time"</span>)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Tutorial_files/figure-html/cell-16-output-1.png" width="661" height="470" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="e70371a8" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>plt.plot(reward_trend[<span class="st">"period"</span>], reward_trend[<span class="st">"median_reward_max_usd"</span>], label<span class="op">=</span><span class="st">"Median"</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>plt.plot(reward_trend[<span class="st">"period"</span>], reward_trend[<span class="st">"p90_reward_max_usd"</span>], label<span class="op">=</span><span class="st">"P90"</span>)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>plt.plot(reward_trend[<span class="st">"period"</span>], reward_trend[<span class="st">"max_reward_max_usd"</span>], label<span class="op">=</span><span class="st">"Max"</span>)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Reward max amount (USD)"</span>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Reward Size Over Time"</span>)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Tutorial_files/figure-html/cell-17-output-1.png" width="661" height="470" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This lets you compare how many cases have rewards and how large those rewards are across time.</p>
+</section>
+<section id="priority-by-subject" class="level4">
+<h4 class="anchored" data-anchor-id="priority-by-subject">5.4.2 Priority by subject</h4>
+<div id="8542670b" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>priority_subject <span class="op">=</span> rq4_priority_by_subject(clean, top_n<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>priority_subject</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">subject</th>
+<th data-quarto-table-cell-role="th">listings</th>
+<th data-quarto-table-cell-role="th">pct_numeric_reward</th>
+<th data-quarto-table-cell-role="th">median_reward_max_usd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">10</th>
+<td>Seeking Information</td>
+<td>22</td>
+<td>72.727273</td>
+<td>17500.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">9</th>
+<td>Most Wanted Terrorists</td>
+<td>19</td>
+<td>94.736842</td>
+<td>5000000.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">6</th>
+<td>Kidnappings and Missing Persons</td>
+<td>17</td>
+<td>70.588235</td>
+<td>10000.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">15</th>
+<td>ViCAP Missing Persons</td>
+<td>14</td>
+<td>0.000000</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Crimes Against Children</td>
+<td>12</td>
+<td>8.333333</td>
+<td>10000.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">4</th>
+<td>Cyber's Most Wanted</td>
+<td>11</td>
+<td>36.363636</td>
+<td>3500000.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">12</th>
+<td>Ten Most Wanted Fugitives</td>
+<td>9</td>
+<td>100.000000</td>
+<td>5000000.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Criminal Enterprise Investigations</td>
+<td>7</td>
+<td>28.571429</td>
+<td>17500.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Additional Violent Crimes</td>
+<td>5</td>
+<td>100.000000</td>
+<td>25000.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">17</th>
+<td>Violent Crime - Murders</td>
+<td>5</td>
+<td>80.000000</td>
+<td>22500.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">8</th>
+<td>Law Enforcement Assistance</td>
+<td>5</td>
+<td>60.000000</td>
+<td>20000.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">21</th>
+<td>White-Collar Crime</td>
+<td>5</td>
+<td>20.000000</td>
+<td>10000.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">14</th>
+<td>ViCAP Homicides and Sexual Assaults</td>
+<td>4</td>
+<td>0.000000</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">16</th>
+<td>ViCAP Unidentified Persons</td>
+<td>3</td>
+<td>0.000000</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">19</th>
+<td>White Collar Crime</td>
+<td>3</td>
+<td>0.000000</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Columns:</p>
+<ul>
+<li><code>subject</code></li>
+<li><code>listings</code></li>
+<li><code>pct_numeric_reward</code></li>
+<li><code>median_reward_max_usd</code></li>
+</ul>
+<p>This gives a simple proxy for “priority” by subject. Subjects that appear often and have higher numeric rewards look like higher priority categories in the data.</p>
+</section>
+<section id="priority-by-program" class="level4">
+<h4 class="anchored" data-anchor-id="priority-by-program">5.4.3 Priority by program</h4>
+<div id="3ab60498" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>priority_program <span class="op">=</span> rq4_priority_by_program(clean)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>priority_program</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">reward_program</th>
+<th data-quarto-table-cell-role="th">listings_with_text</th>
+<th data-quarto-table-cell-role="th">listings_with_amount</th>
+<th data-quarto-table-cell-role="th">median_reward_max_usd</th>
+<th data-quarto-table-cell-role="th">max_reward_max_usd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>FBI</td>
+<td>49</td>
+<td>47</td>
+<td>20000.0</td>
+<td>250000.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Rewards for Justice</td>
+<td>22</td>
+<td>22</td>
+<td>5000000.0</td>
+<td>15000000.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">3</th>
+<td>State Department</td>
+<td>8</td>
+<td>8</td>
+<td>4000000.0</td>
+<td>10000000.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Other/Unknown</td>
+<td>1</td>
+<td>1</td>
+<td>5000000.0</td>
+<td>5000000.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Columns:</p>
+<ul>
+<li><code>reward_program</code></li>
+<li><code>listings_with_text</code></li>
+<li><code>listings_with_amount</code></li>
+<li><code>median_reward_max_usd</code></li>
+<li><code>max_reward_max_usd</code></li>
+</ul>
+<p>This is useful if you want to compare things like:</p>
+<ul>
+<li>How many cases use FBI rewards</li>
+<li>How many involve “Rewards for Justice”</li>
+<li>How large the rewards tend to be for each program</li>
+</ul>
+</section>
+<section id="priority-by-field-office" class="level4">
+<h4 class="anchored" data-anchor-id="priority-by-field-office">5.4.4 Priority by field office</h4>
+<div id="ed0a45ed" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>priority_office <span class="op">=</span> rq4_priority_by_field_office(clean, top_n<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>priority_office</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">field_office</th>
+<th data-quarto-table-cell-role="th">listings</th>
+<th data-quarto-table-cell-role="th">pct_numeric_reward</th>
+<th data-quarto-table-cell-role="th">median_reward_max_usd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Unknown</td>
+<td>23</td>
+<td>0.000000</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">41</th>
+<td>washingtondc</td>
+<td>20</td>
+<td>95.000000</td>
+<td>5000000.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">18</th>
+<td>losangeles</td>
+<td>17</td>
+<td>23.529412</td>
+<td>625000.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">20</th>
+<td>miami</td>
+<td>8</td>
+<td>25.000000</td>
+<td>1001250.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">36</th>
+<td>sanfrancisco</td>
+<td>6</td>
+<td>100.000000</td>
+<td>25000.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">26</th>
+<td>newyork</td>
+<td>5</td>
+<td>60.000000</td>
+<td>5000000.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">28</th>
+<td>philadelphia</td>
+<td>5</td>
+<td>20.000000</td>
+<td>25000.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">12</th>
+<td>houston</td>
+<td>4</td>
+<td>100.000000</td>
+<td>4000000.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">7</th>
+<td>chicago</td>
+<td>4</td>
+<td>50.000000</td>
+<td>15000.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">37</th>
+<td>seattle</td>
+<td>4</td>
+<td>75.000000</td>
+<td>10000.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">40</th>
+<td>tampa</td>
+<td>4</td>
+<td>25.000000</td>
+<td>5000.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">25</th>
+<td>neworleans</td>
+<td>3</td>
+<td>100.000000</td>
+<td>20000.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">32</th>
+<td>sacramento</td>
+<td>3</td>
+<td>33.333333</td>
+<td>20000.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>buffalo</td>
+<td>3</td>
+<td>100.000000</td>
+<td>15000.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">13</th>
+<td>indianapolis</td>
+<td>3</td>
+<td>33.333333</td>
+<td>10000.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Columns:</p>
+<ul>
+<li><code>field_office</code></li>
+<li><code>listings</code></li>
+<li><code>pct_numeric_reward</code></li>
+<li><code>median_reward_max_usd</code></li>
+</ul>
+<p>Here you can see which field offices:</p>
+<ul>
+<li>Have the most listings in your pull</li>
+<li>Have higher rates of numeric rewards</li>
+<li>Tend to have higher reward levels</li>
+</ul>
+<p>You might pair this with maps or external context, but the function itself gives you a solid starting point.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="using-the-package-with-the-streamlit-app" class="level2">
+<h2 class="anchored" data-anchor-id="using-the-package-with-the-streamlit-app">6. Using the package with the Streamlit app</h2>
+<p>The repo also includes a <code>streamlit_app.py</code> file that builds an interactive dashboard on top of the same functions you have used here.</p>
+<p>In a terminal, from the project root, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">streamlit</span> run src/fbi_wanted_analysis/streamlit_app.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The app will:</p>
+<ul>
+<li><p>Fetch and clean data using <code>fetch_current_wanted</code> and <code>clean_wanted</code></p></li>
+<li><p>Let you filter by title, field office, sex, race, subjects, and reward presence</p></li>
+<li><p>Show:</p>
+<ul>
+<li>Overview metrics and a data preview</li>
+<li>Volume over time (RQ1)</li>
+<li>Concentration by field office (RQ2)</li>
+<li>Reward amounts by crime type (RQ3)</li>
+<li>Reward and volume trends, plus priority tables (RQ4)</li>
+</ul></li>
+</ul>
+<p>You can compare the results you see in this notebook with the interactive charts in the app. Both use the same underlying functions.</p>
+<hr>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">7. Summary</h2>
+<p>The <code>fbi_wanted_analysis</code> package gives you:</p>
+<ul>
+<li>A simple API wrapper: <code>fetch_current_wanted</code></li>
+<li>A cleaning pipeline: <code>clean_wanted</code></li>
+<li>Reward parsing logic: <code>parse_reward</code> used inside the cleaning step</li>
+<li>Analysis helpers for:
+<ul>
+<li>Volume over time</li>
+<li>Crime types and rewards</li>
+<li>Reward trends and inferred enforcement priorities</li>
+</ul></li>
+</ul>
+<p>You can use it either in scripts and notebooks or through the Streamlit dashboard. For most custom analysis, the pattern is:</p>
+<ol type="1">
+<li>Fetch</li>
+<li>Clean</li>
+<li>Call one or more helper functions</li>
+<li>Visualize or export the results</li>
+</ol>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -206,7 +1625,7 @@ Running analysis pipeline...</code></pre>
     anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {
+        if (clz.startsWith('code-annotation-')) {                     
           return true;
         }
       }
@@ -226,11 +1645,11 @@ Running analysis pipeline...</code></pre>
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
         button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button,
-          { trigger: "manual",
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
             offset: [0, -8]});
-        tooltip.show();
+        tooltip.show();    
       }
       setTimeout(function() {
         if (tooltip) {
@@ -246,13 +1665,14 @@ Running analysis pipeline...</code></pre>
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -306,7 +1726,7 @@ Running analysis pipeline...</code></pre>
       if (onUntriggerFn) {
         config.onUntrigger = onUntriggerFn;
       }
-      window.tippy(el, config);
+      window.tippy(el, config); 
     }
     const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
     for (var i=0; i<noterefs.length; i++) {
@@ -381,7 +1801,7 @@ Running analysis pipeline...</code></pre>
       tippyHover(xref, undefined, function(instance) {
         instance.disable();
         let url = xref.getAttribute('href');
-        let hash = undefined;
+        let hash = undefined; 
         if (url.startsWith('#')) {
           hash = url;
         } else {
@@ -409,7 +1829,7 @@ Running analysis pipeline...</code></pre>
               if (note !== null) {
                 const html = processXRef(id, note);
                 instance.setContent(html);
-              }
+              } 
             }).finally(() => {
               instance.enable();
               instance.show();
@@ -433,7 +1853,7 @@ Running analysis pipeline...</code></pre>
               }
               const html = processXRef(null, note);
               instance.setContent(html);
-            }
+            } 
           }).finally(() => {
             instance.enable();
             instance.show();
@@ -473,7 +1893,7 @@ Running analysis pipeline...</code></pre>
               height = bottom - top;
             }
             if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it
+              // cook up a div (if necessary) and position it 
               let div = window.document.getElementById("code-annotation-line-highlight");
               if (div === null) {
                 div = window.document.createElement("div");

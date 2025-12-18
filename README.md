@@ -45,6 +45,20 @@ summary = reward_by_crime_type(df)
 print(summary.head())
 ```
 
+### Run the Streamlit App
+
+To launch the interactive visualization dashboard:
+
+```bash
+streamlit run src/fbi_wanted_analysis/streamlit_app.py
+```
+
+This dashboard provides:
+- Volume over time
+- Reward intensity trends
+- Subject‑level reward patterns
+- Field office comparisons
+
 ## Project Purpose
 
 This package supports statistical exploration, reproducible reporting, and real-world data analysis. It is also used in a Streamlit dashboard that visualizes reward intensity, volume patterns over time, crime subject distribution, and field-office concentration.

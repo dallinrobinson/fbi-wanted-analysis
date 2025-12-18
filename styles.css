@@ -1,1 +1,159 @@
 /* css styles */
+/* Global layout and typography */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  background-color: #f7f7f9;
+}
+
+/* Page title block */
+.quarto-title-block {
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #dee2e6;
+  margin-bottom: 1.5rem;
+}
+
+.quarto-title-block .title {
+  font-weight: 650;
+  letter-spacing: 0.02em;
+}
+
+/* Links */
+a {
+  color: #0b7285;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+/* Navbar */
+.navbar {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+  font-weight: 500;
+}
+
+.navbar-nav .nav-link.active {
+  border-bottom: 2px solid #0b7285;
+}
+
+/* Main content container */
+main#quarto-document-content {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.04);
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+  font-weight: 600;
+  color: #212529;
+}
+
+h2 {
+  margin-top: 1.75rem;
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 0.25rem;
+}
+
+h3 {
+  margin-top: 1.25rem;
+}
+
+/* Paragraph spacing */
+p {
+  margin-bottom: 0.75rem;
+}
+
+/* Lists */
+ul, ol {
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Code blocks and inline code */
+code {
+  font-family: "JetBrains Mono", "Fira Code", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.9rem;
+  background-color: #f1f3f5;
+  padding: 0.1rem 0.25rem;
+  border-radius: 0.25rem;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+pre {
+  background-color: #212529;
+  color: #f8f9fa;
+  padding: 0.85rem 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  font-size: 0.9rem;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+table th,
+table td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #dee2e6;
+}
+
+table thead th {
+  background-color: #f1f3f5;
+  font-weight: 600;
+}
+
+/* Callouts (Quarto) */
+.callout {
+  border-radius: 0.5rem;
+  border-left-width: 0.3rem;
+}
+
+/* Figures / images */
+figure {
+  text-align: center;
+}
+
+figure img {
+  border-radius: 0.5rem;
+  max-width: 100%;
+  height: auto;
+}
+
+figure figcaption {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-top: 0.25rem;
+}
+
+/* Footer (if present) */
+.footer,
+.page-footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #dee2e6;
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+/* Home page tweaks: tighten link list a bit */
+body[data-page="index.qmd"] main#quarto-document-content p a {
+  font-weight: 500;
+}

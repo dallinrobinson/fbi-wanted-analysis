@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -32,14 +32,15 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -79,6 +80,8 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">website</span>
     </a>
@@ -101,6 +104,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./Tutorial.html"> 
 <span class="menu-text">Tutorial</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./TechnicalReport.html"> 
+<span class="menu-text">Technical Report</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -112,8 +119,40 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#functions" id="toc-functions" class="nav-link active" data-scroll-target="#functions">Functions</a>
+  <ul class="collapse">
+  <li><a href="#fetch_current_wantedpage_size-int-200-pages-int-1---pd.dataframe" id="toc-fetch_current_wantedpage_size-int-200-pages-int-1---pd.dataframe" class="nav-link" data-scroll-target="#fetch_current_wantedpage_size-int-200-pages-int-1---pd.dataframe"><code>fetch_current_wanted(page_size: int = 200, pages: int = 1) -&gt; pd.DataFrame</code></a></li>
+  <li><a href="#run_analysis_pipeline---none" id="toc-run_analysis_pipeline---none" class="nav-link" data-scroll-target="#run_analysis_pipeline---none"><code>run_analysis_pipeline() -&gt; None</code></a></li>
+  </ul></li>
+  <li><a href="#research-question-functions" id="toc-research-question-functions" class="nav-link" data-scroll-target="#research-question-functions">Research Question Functions</a>
+  <ul class="collapse">
+  <li><a href="#rq1-quantity_over_timedf-pd.dataframe---pd.dataframe" id="toc-rq1-quantity_over_timedf-pd.dataframe---pd.dataframe" class="nav-link" data-scroll-target="#rq1-quantity_over_timedf-pd.dataframe---pd.dataframe">RQ1 — <code>quantity_over_time(df: pd.DataFrame) -&gt; pd.DataFrame</code></a></li>
+  <li><a href="#rq2-geographic_concentration_over_timedf-pd.dataframe-geography-str---pd.dataframe" id="toc-rq2-geographic_concentration_over_timedf-pd.dataframe-geography-str---pd.dataframe" class="nav-link" data-scroll-target="#rq2-geographic_concentration_over_timedf-pd.dataframe-geography-str---pd.dataframe">RQ2 — <code>geographic_concentration_over_time(df: pd.DataFrame, geography: str) -&gt; pd.DataFrame</code></a></li>
+  <li><a href="#rq3-reward_by_crime_typedf-pd.dataframe---pd.dataframe" id="toc-rq3-reward_by_crime_typedf-pd.dataframe---pd.dataframe" class="nav-link" data-scroll-target="#rq3-reward_by_crime_typedf-pd.dataframe---pd.dataframe">RQ3 — <code>reward_by_crime_type(df: pd.DataFrame) -&gt; pd.DataFrame</code></a></li>
+  </ul></li>
+  <li><a href="#helpers" id="toc-helpers" class="nav-link" data-scroll-target="#helpers">Helpers</a>
+  <ul class="collapse">
+  <li><a href="#to_datetime_seriess-pd.series---pd.series" id="toc-to_datetime_seriess-pd.series---pd.series" class="nav-link" data-scroll-target="#to_datetime_seriess-pd.series---pd.series"><code>_to_datetime_series(s: pd.Series) -&gt; pd.Series</code></a></li>
+  <li><a href="#add_time_graindf-pd.dataframe-date_col-str-freq-str-m---pd.dataframe" id="toc-add_time_graindf-pd.dataframe-date_col-str-freq-str-m---pd.dataframe" class="nav-link" data-scroll-target="#add_time_graindf-pd.dataframe-date_col-str-freq-str-m---pd.dataframe"><code>_add_time_grain(df: pd.DataFrame, date_col: str, freq: str = "M") -&gt; pd.DataFrame</code></a></li>
+  <li><a href="#safe_first_subjectx---str" id="toc-safe_first_subjectx---str" class="nav-link" data-scroll-target="#safe_first_subjectx---str"><code>_safe_first_subject(x) -&gt; str</code></a></li>
+  <li><a href="#ensure_reward_colsdf-pd.dataframe---none" id="toc-ensure_reward_colsdf-pd.dataframe---none" class="nav-link" data-scroll-target="#ensure_reward_colsdf-pd.dataframe---none"><code>_ensure_reward_cols(df: pd.DataFrame) -&gt; None</code></a></li>
+  </ul></li>
+  <li><a href="#rq4-priorityinterpretation-functions" id="toc-rq4-priorityinterpretation-functions" class="nav-link" data-scroll-target="#rq4-priorityinterpretation-functions">RQ4 — Priority/Interpretation Functions</a>
+  <ul class="collapse">
+  <li><a href="#rq4_volume_trenddf-pd.dataframe-date_col-str-publication-freq-str-m---pd.dataframe" id="toc-rq4_volume_trenddf-pd.dataframe-date_col-str-publication-freq-str-m---pd.dataframe" class="nav-link" data-scroll-target="#rq4_volume_trenddf-pd.dataframe-date_col-str-publication-freq-str-m---pd.dataframe"><code>rq4_volume_trend(df: pd.DataFrame, date_col: str = "publication", freq: str = "M") -&gt; pd.DataFrame</code></a></li>
+  <li><a href="#rq4_reward_trenddf-pd.dataframe-date_col-str-publication-freq-str-m---pd.dataframe" id="toc-rq4_reward_trenddf-pd.dataframe-date_col-str-publication-freq-str-m---pd.dataframe" class="nav-link" data-scroll-target="#rq4_reward_trenddf-pd.dataframe-date_col-str-publication-freq-str-m---pd.dataframe"><code>rq4_reward_trend(df: pd.DataFrame, date_col: str = "publication", freq: str = "M") -&gt; pd.DataFrame</code></a></li>
+  <li><a href="#rq4_priority_by_subjectdf-pd.dataframe-top_n-int-15---pd.dataframe" id="toc-rq4_priority_by_subjectdf-pd.dataframe-top_n-int-15---pd.dataframe" class="nav-link" data-scroll-target="#rq4_priority_by_subjectdf-pd.dataframe-top_n-int-15---pd.dataframe"><code>rq4_priority_by_subject(df: pd.DataFrame, top_n: int = 15) -&gt; pd.DataFrame</code></a></li>
+  <li><a href="#rq4_priority_by_programdf-pd.dataframe---pd.dataframe" id="toc-rq4_priority_by_programdf-pd.dataframe---pd.dataframe" class="nav-link" data-scroll-target="#rq4_priority_by_programdf-pd.dataframe---pd.dataframe"><code>rq4_priority_by_program(df: pd.DataFrame) -&gt; pd.DataFrame</code></a></li>
+  <li><a href="#rq4_priority_by_field_officedf-pd.dataframe-top_n-int-15---pd.dataframe" id="toc-rq4_priority_by_field_officedf-pd.dataframe-top_n-int-15---pd.dataframe" class="nav-link" data-scroll-target="#rq4_priority_by_field_officedf-pd.dataframe-top_n-int-15---pd.dataframe"><code>rq4_priority_by_field_office(df: pd.DataFrame, top_n: int = 15) -&gt; pd.DataFrame</code></a></li>
+  </ul></li>
+  <li><a href="#recommended-usage-in-streamlit" id="toc-recommended-usage-in-streamlit" class="nav-link" data-scroll-target="#recommended-usage-in-streamlit">Recommended Usage in Streamlit</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -137,9 +176,180 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Functions:</p>
+<p>This document describes the purpose, inputs, outputs, and expected usage of the functions in <code>analysis.py</code> for the FBI Wanted Analysis project.</p>
+<section id="functions" class="level2">
+<h2 class="anchored" data-anchor-id="functions">Functions</h2>
+<section id="fetch_current_wantedpage_size-int-200-pages-int-1---pd.dataframe" class="level3">
+<h3 class="anchored" data-anchor-id="fetch_current_wantedpage_size-int-200-pages-int-1---pd.dataframe"><code>fetch_current_wanted(page_size: int = 200, pages: int = 1) -&gt; pd.DataFrame</code></h3>
+<p><strong>Purpose</strong><br>
+Fetches current FBI Wanted listings from the FBI Wanted API and returns a normalized pandas DataFrame containing a subset of high-value fields used throughout the project.</p>
+<p><strong>Inputs</strong> - <code>page_size</code> (int): Number of records per page requested from the API (default <code>200</code>). - <code>pages</code> (int): Number of pages to fetch (default <code>1</code>).</p>
+<p><strong>Output</strong> - <code>pd.DataFrame</code>: DataFrame of wanted listings. If the API returns no items, returns an empty DataFrame.</p>
+<p><strong>Key columns returned (if available)</strong> - <code>uid</code>, <code>title</code>, <code>publication</code>, <code>field_offices</code>, <code>sex</code>, <code>race</code>, <code>subjects</code>, <code>reward_text</code>, <code>caution</code>, <code>details</code></p>
+<p><strong>Notes</strong> - This function returns <em>current</em> listings only. The FBI API endpoint used does not provide historical snapshots.</p>
+<hr>
+</section>
+<section id="run_analysis_pipeline---none" class="level3">
+<h3 class="anchored" data-anchor-id="run_analysis_pipeline---none"><code>run_analysis_pipeline() -&gt; None</code></h3>
+<p><strong>Purpose</strong><br>
+Legacy stub included to prevent older scaffolding/tests from breaking.</p>
+<p><strong>Inputs / Outputs</strong> - No inputs. Prints a short message.</p>
+<hr>
+</section>
+</section>
+<section id="research-question-functions" class="level2">
+<h2 class="anchored" data-anchor-id="research-question-functions">Research Question Functions</h2>
+<section id="rq1-quantity_over_timedf-pd.dataframe---pd.dataframe" class="level3">
+<h3 class="anchored" data-anchor-id="rq1-quantity_over_timedf-pd.dataframe---pd.dataframe">RQ1 — <code>quantity_over_time(df: pd.DataFrame) -&gt; pd.DataFrame</code></h3>
+<p><strong>Research question</strong><br>
+How does the quantity of most wanted cases change over time?</p>
+<p><strong>Purpose</strong><br>
+Aggregates listings by <code>snapshot_date</code> and counts unique listings per snapshot. This function is intended for a <strong>snapshot-based dataset</strong>.</p>
+<p><strong>Required columns in <code>df</code></strong> - <code>snapshot_date</code> (datetime-like): The date/time the snapshot was captured. - <code>uid</code> (str): Unique listing identifier.</p>
+<p><strong>Output</strong> - <code>pd.DataFrame</code> with columns: - <code>snapshot_date</code> - <code>total_listings</code> (unique <code>uid</code> count per snapshot)</p>
+<p><strong>Interpretation</strong> - Each row represents a snapshot date, with <code>total_listings</code> equal to the number of active listings observed in that snapshot.</p>
+<p><strong>Important limitation</strong> - This function requires snapshot data. The current FBI API pull does not include <code>snapshot_date</code> unless you add it externally (e.g., scheduled pulls or archived snapshots).</p>
+<hr>
+</section>
+<section id="rq2-geographic_concentration_over_timedf-pd.dataframe-geography-str---pd.dataframe" class="level3">
+<h3 class="anchored" data-anchor-id="rq2-geographic_concentration_over_timedf-pd.dataframe-geography-str---pd.dataframe">RQ2 — <code>geographic_concentration_over_time(df: pd.DataFrame, geography: str) -&gt; pd.DataFrame</code></h3>
+<p><strong>Research question</strong><br>
+Which U.S regions, states, or FBI field offices have the highest concentration of wanted cases? How has this distribution shifted historically?</p>
+<p><strong>Purpose</strong><br>
+Computes concentration (counts and shares) by a specified geographic dimension for each <code>snapshot_date</code>.</p>
+<p><strong>Inputs</strong> - <code>df</code> (pd.DataFrame): Snapshot-based dataset. - <code>geography</code> (str): Column name in <code>df</code> representing the geography to analyze (e.g., <code>"field_offices"</code>, <code>"state"</code>, <code>"region"</code>).</p>
+<p><strong>Required columns in <code>df</code></strong> - <code>snapshot_date</code> - <code>uid</code> - <code>geography</code> (column specified by the <code>geography</code> argument)</p>
+<p><strong>Output</strong> - <code>pd.DataFrame</code> with columns: - <code>snapshot_date</code> - <code>&lt;geography&gt;</code> (the chosen category column) - <code>listings</code> (unique listing count per category per snapshot) - <code>share</code> (<code>listings</code> divided by total listings for that snapshot)</p>
+<p><strong>Interpretation</strong> - <code>share</code> allows comparisons across time even if the total number of listings changes.</p>
+<p><strong>Important limitation</strong> - As written, the function assumes true snapshot data is available via <code>snapshot_date</code>.</p>
+<hr>
+</section>
+<section id="rq3-reward_by_crime_typedf-pd.dataframe---pd.dataframe" class="level3">
+<h3 class="anchored" data-anchor-id="rq3-reward_by_crime_typedf-pd.dataframe---pd.dataframe">RQ3 — <code>reward_by_crime_type(df: pd.DataFrame) -&gt; pd.DataFrame</code></h3>
+<p><strong>Research question</strong><br>
+What types of crimes receive the highest reward amounts?</p>
+<p><strong>Purpose</strong><br>
+Summarizes reward amounts by crime “type” using the <code>subjects</code> field as the crime-type label. Subject lists are exploded so each listing can contribute to multiple categories without double-counting within a category.</p>
+<p><strong>Required columns in <code>df</code></strong> - <code>uid</code> - <code>subjects</code> (list-like or str): Crime-type tags - <code>reward_has_amount</code> (bool): Indicates whether a numeric reward amount was parsed - <code>reward_amount_max_usd</code> (numeric): Maximum stated reward in USD (parsed)</p>
+<p><strong>Output</strong> - <code>pd.DataFrame</code> with columns: - <code>crime_type</code> - <code>median_reward</code> - <code>mean_reward</code> - <code>max_reward</code> - <code>listings</code> (number of <code>(uid, crime_type)</code> pairs contributing)</p>
+<p><strong>Interpretation</strong> - <code>median_reward</code> is typically the most robust summary for comparing crime types because reward distributions can be highly skewed.</p>
+<hr>
+</section>
+</section>
+<section id="helpers" class="level2">
+<h2 class="anchored" data-anchor-id="helpers">Helpers</h2>
+<section id="to_datetime_seriess-pd.series---pd.series" class="level3">
+<h3 class="anchored" data-anchor-id="to_datetime_seriess-pd.series---pd.series"><code>_to_datetime_series(s: pd.Series) -&gt; pd.Series</code></h3>
+<p><strong>Purpose</strong><br>
+Safely converts a series to datetime using <code>errors="coerce"</code> and <code>utc=True</code>.</p>
+<p><strong>Input</strong> - <code>s</code> (pd.Series)</p>
+<p><strong>Output</strong> - <code>pd.Series</code> of datetimes (invalid parses become <code>NaT</code>)</p>
+<hr>
+</section>
+<section id="add_time_graindf-pd.dataframe-date_col-str-freq-str-m---pd.dataframe" class="level3">
+<h3 class="anchored" data-anchor-id="add_time_graindf-pd.dataframe-date_col-str-freq-str-m---pd.dataframe"><code>_add_time_grain(df: pd.DataFrame, date_col: str, freq: str = "M") -&gt; pd.DataFrame</code></h3>
+<p><strong>Purpose</strong><br>
+Adds a <code>period</code> column that bins a datetime column into a specified frequency (day/week/month/quarter/year), then converts it to a timestamp (start of period).</p>
+<p><strong>Inputs</strong> - <code>df</code> (pd.DataFrame) - <code>date_col</code> (str): Name of date column to transform (commonly <code>"publication"</code>) - <code>freq</code> (str): Pandas period frequency (default <code>"M"</code>)</p>
+<p><strong>Output</strong> - Copy of <code>df</code> with a new <code>period</code> column.</p>
+<p><strong>Notes</strong> - If <code>date_col</code> is missing, <code>period</code> is set to <code>NaT</code>.</p>
+<hr>
+</section>
+<section id="safe_first_subjectx---str" class="level3">
+<h3 class="anchored" data-anchor-id="safe_first_subjectx---str"><code>_safe_first_subject(x) -&gt; str</code></h3>
+<p><strong>Purpose</strong><br>
+Returns the first subject tag if available; otherwise returns <code>"Unknown"</code>.</p>
+<hr>
+</section>
+<section id="ensure_reward_colsdf-pd.dataframe---none" class="level3">
+<h3 class="anchored" data-anchor-id="ensure_reward_colsdf-pd.dataframe---none"><code>_ensure_reward_cols(df: pd.DataFrame) -&gt; None</code></h3>
+<p><strong>Purpose</strong><br>
+Validates that reward parsing columns exist (expected to be created during cleaning). Raises a clear error if missing.</p>
+<p><strong>Required reward columns</strong> - <code>reward_has_text</code> - <code>reward_has_amount</code> - <code>reward_amount_max_usd</code> - <code>reward_program</code></p>
+<hr>
+</section>
+</section>
+<section id="rq4-priorityinterpretation-functions" class="level2">
+<h2 class="anchored" data-anchor-id="rq4-priorityinterpretation-functions">RQ4 — Priority/Interpretation Functions</h2>
+<p>These functions support the interpretation question:</p>
+<blockquote class="blockquote">
+<p>What do trends in rewards and quantity of wanted persons reveal about law enforcement priorities?</p>
+</blockquote>
+<p>They are designed to work with the <strong>current API dataset</strong> using <code>publication</code> as the time anchor (unless you later build true snapshots).</p>
+<hr>
+<section id="rq4_volume_trenddf-pd.dataframe-date_col-str-publication-freq-str-m---pd.dataframe" class="level3">
+<h3 class="anchored" data-anchor-id="rq4_volume_trenddf-pd.dataframe-date_col-str-publication-freq-str-m---pd.dataframe"><code>rq4_volume_trend(df: pd.DataFrame, date_col: str = "publication", freq: str = "M") -&gt; pd.DataFrame</code></h3>
+<p><strong>Purpose</strong><br>
+Computes the number of listings over time by aggregating a date column into time periods.</p>
+<p><strong>Inputs</strong> - <code>df</code> (pd.DataFrame) - <code>date_col</code> (str): Date column to use (default <code>"publication"</code>) - <code>freq</code> (str): Time bin frequency (default <code>"M"</code>)</p>
+<p><strong>Output</strong> - <code>pd.DataFrame</code> with columns: - <code>period</code> - <code>listings</code> (count of rows per period)</p>
+<p><strong>Interpretation</strong> - Shows when currently active listings were published (publication-date trend), not the historical active-list size unless snapshot data is used.</p>
+<hr>
+</section>
+<section id="rq4_reward_trenddf-pd.dataframe-date_col-str-publication-freq-str-m---pd.dataframe" class="level3">
+<h3 class="anchored" data-anchor-id="rq4_reward_trenddf-pd.dataframe-date_col-str-publication-freq-str-m---pd.dataframe"><code>rq4_reward_trend(df: pd.DataFrame, date_col: str = "publication", freq: str = "M") -&gt; pd.DataFrame</code></h3>
+<p><strong>Purpose</strong><br>
+Summarizes reward presence and reward magnitude over time.</p>
+<p><strong>Inputs</strong> - <code>df</code> (pd.DataFrame) - <code>date_col</code> (str): Date column to use (default <code>"publication"</code>) - <code>freq</code> (str): Time bin frequency (default <code>"M"</code>)</p>
+<p><strong>Required columns</strong> - <code>publication</code> (or chosen <code>date_col</code>) - reward parsing columns enforced by <code>_ensure_reward_cols</code></p>
+<p><strong>Output</strong> - <code>pd.DataFrame</code> with columns: - <code>period</code> - <code>listings</code> - <code>pct_with_reward_text</code> - <code>pct_with_numeric_reward</code> - <code>median_reward_max_usd</code> - <code>p90_reward_max_usd</code> - <code>max_reward_max_usd</code></p>
+<p><strong>Interpretation</strong> - Reward percentages indicate how often rewards are used. - Median/p90/max reward show how reward magnitude changes across publication periods.</p>
+<hr>
+</section>
+<section id="rq4_priority_by_subjectdf-pd.dataframe-top_n-int-15---pd.dataframe" class="level3">
+<h3 class="anchored" data-anchor-id="rq4_priority_by_subjectdf-pd.dataframe-top_n-int-15---pd.dataframe"><code>rq4_priority_by_subject(df: pd.DataFrame, top_n: int = 15) -&gt; pd.DataFrame</code></h3>
+<p><strong>Purpose</strong><br>
+Ranks subject categories using: - how often they appear, - how often they include numeric rewards, - typical reward size (median reward among numeric rewards).</p>
+<p><strong>Inputs</strong> - <code>top_n</code> (int): Number of top subjects to return.</p>
+<p><strong>Output</strong> - <code>pd.DataFrame</code> with columns: - <code>subject</code> - <code>listings</code> - <code>pct_numeric_reward</code> - <code>median_reward_max_usd</code></p>
+<p><strong>Interpretation</strong> - Useful for connecting “crime type” with both frequency and reward intensity.</p>
+<hr>
+</section>
+<section id="rq4_priority_by_programdf-pd.dataframe---pd.dataframe" class="level3">
+<h3 class="anchored" data-anchor-id="rq4_priority_by_programdf-pd.dataframe---pd.dataframe"><code>rq4_priority_by_program(df: pd.DataFrame) -&gt; pd.DataFrame</code></h3>
+<p><strong>Purpose</strong><br>
+Summarizes reward patterns by reward program (e.g., FBI programs vs other reward initiatives).</p>
+<p><strong>Output</strong> - <code>pd.DataFrame</code> with columns: - <code>reward_program</code> - <code>listings_with_text</code> - <code>listings_with_amount</code> - <code>median_reward_max_usd</code> - <code>max_reward_max_usd</code></p>
+<p><strong>Interpretation</strong> - Helps explain whether high rewards come from specific reward programs.</p>
+<hr>
+</section>
+<section id="rq4_priority_by_field_officedf-pd.dataframe-top_n-int-15---pd.dataframe" class="level3">
+<h3 class="anchored" data-anchor-id="rq4_priority_by_field_officedf-pd.dataframe-top_n-int-15---pd.dataframe"><code>rq4_priority_by_field_office(df: pd.DataFrame, top_n: int = 15) -&gt; pd.DataFrame</code></h3>
+<p><strong>Purpose</strong><br>
+Shows which field offices have the most listings and whether those listings tend to have numeric rewards and higher reward magnitudes.</p>
+<p><strong>Key behavior</strong> - Handles <code>field_offices</code> values that may be lists by normalizing to lists and exploding.</p>
+<p><strong>Output</strong> - <code>pd.DataFrame</code> with columns: - <code>field_office</code> - <code>listings</code> - <code>pct_numeric_reward</code> - <code>median_reward_max_usd</code></p>
+<p><strong>Interpretation</strong> - Useful for comparing geographic concentration with reward intensity.</p>
+<hr>
+</section>
+</section>
+<section id="recommended-usage-in-streamlit" class="level2">
+<h2 class="anchored" data-anchor-id="recommended-usage-in-streamlit">Recommended Usage in Streamlit</h2>
+<p>A typical workflow is:</p>
+<ol type="1">
+<li>Fetch + clean:
+<ul>
+<li><code>df_raw = fetch_current_wanted(...)</code></li>
+<li><code>df = clean_wanted(df_raw)</code></li>
+</ul></li>
+<li>Produce summary tables:
+<ul>
+<li><code>reward_by_crime_type(df)</code></li>
+<li><code>rq4_volume_trend(df)</code></li>
+<li><code>rq4_reward_trend(df)</code></li>
+<li><code>rq4_priority_by_subject(df)</code></li>
+<li><code>rq4_priority_by_field_office(df)</code></li>
+</ul></li>
+<li>Visualize:
+<ul>
+<li>Line charts for trends (<code>rq4_volume_trend</code>, <code>rq4_reward_trend</code>)</li>
+<li>Bar charts for top categories (<code>reward_by_crime_type</code>, priority tables)</li>
+</ul></li>
+</ol>
+<hr>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -193,13 +403,14 @@ ul.task-list li input[type="checkbox"] {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

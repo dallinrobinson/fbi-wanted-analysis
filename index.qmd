@@ -1,11 +1,18 @@
 ---
-title: "My Python Package!"
+title: "fbi_wanted_analysis"
 ---
 
-Here is a website all about my package for STAT 386!
+Welcome to the homepage for **fbi_wanted_analysis**, a Python package built for STAT 386.
 
-Documentation [here](Documentation.qmd).
+This package:
 
-Get started [here](Tutorial.qmd).
+- Pulls live data from the official FBI Wanted API
+- Cleans and standardizes the raw listings
+- Parses messy reward text into usable numeric amounts
+- Helps you explore patterns in field offices, subjects, and rewards
 
-Review the [technical report](TechnicalReport.qmd).
+Use this site to learn how everything fits together and how to use the code in your own projects.
+
+- Read the full **function and module reference** in the [Documentation](Documentation.qmd).
+- Walk through a step-by-step example in the [Getting Started Tutorial](Tutorial.qmd).
+- See the full analysis and research questions in the [Technical Report](TechnicalReport.qmd).
