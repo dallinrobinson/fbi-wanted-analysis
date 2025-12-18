@@ -366,7 +366,7 @@ def main() -> None:
 
     st.caption(
         "Interpretation idea: if certain subjects or offices have both high volume and high reward intensity, "
-        "those categories may reflect more urgent or higher-stakes enforcement attention in the dataset you pulled."
+        "those categories may reflect more urgent or higher-stakes enforcement attention."
     )
 
 

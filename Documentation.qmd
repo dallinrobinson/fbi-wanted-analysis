@@ -2,4 +2,317 @@
 title: "Documentation"
 ---
 
-Functions:
+This document describes the purpose, inputs, outputs, and expected usage of the functions in `analysis.py` for the FBI Wanted Analysis project.
+
+## Functions
+
+### `fetch_current_wanted(page_size: int = 200, pages: int = 1) -> pd.DataFrame`
+
+**Purpose**  
+Fetches current FBI Wanted listings from the FBI Wanted API and returns a normalized pandas DataFrame containing a subset of high-value fields used throughout the project.
+
+**Inputs**
+- `page_size` (int): Number of records per page requested from the API (default `200`).
+- `pages` (int): Number of pages to fetch (default `1`).
+
+**Output**
+- `pd.DataFrame`: DataFrame of wanted listings. If the API returns no items, returns an empty DataFrame.
+
+**Key columns returned (if available)**
+- `uid`, `title`, `publication`, `field_offices`, `sex`, `race`, `subjects`, `reward_text`, `caution`, `details`
+
+**Notes**
+- This function returns *current* listings only. The FBI API endpoint used does not provide historical snapshots.
+
+---
+
+### `run_analysis_pipeline() -> None`
+
+**Purpose**  
+Legacy stub included to prevent older scaffolding/tests from breaking.
+
+**Inputs / Outputs**
+- No inputs. Prints a short message.
+
+---
+
+## Research Question Functions
+
+### RQ1 — `quantity_over_time(df: pd.DataFrame) -> pd.DataFrame`
+
+**Research question**  
+How does the quantity of most wanted cases change over time?
+
+**Purpose**  
+Aggregates listings by `snapshot_date` and counts unique listings per snapshot. This function is intended for a **snapshot-based dataset**.
+
+**Required columns in `df`**
+- `snapshot_date` (datetime-like): The date/time the snapshot was captured.
+- `uid` (str): Unique listing identifier.
+
+**Output**
+- `pd.DataFrame` with columns:
+  - `snapshot_date`
+  - `total_listings` (unique `uid` count per snapshot)
+
+**Interpretation**
+- Each row represents a snapshot date, with `total_listings` equal to the number of active listings observed in that snapshot.
+
+**Important limitation**
+- This function requires snapshot data. The current FBI API pull does not include `snapshot_date` unless you add it externally (e.g., scheduled pulls or archived snapshots).
+
+---
+
+### RQ2 — `geographic_concentration_over_time(df: pd.DataFrame, geography: str) -> pd.DataFrame`
+
+**Research question**  
+Which U.S regions, states, or FBI field offices have the highest concentration of wanted cases? How has this distribution shifted historically?
+
+**Purpose**  
+Computes concentration (counts and shares) by a specified geographic dimension for each `snapshot_date`.
+
+**Inputs**
+- `df` (pd.DataFrame): Snapshot-based dataset.
+- `geography` (str): Column name in `df` representing the geography to analyze (e.g., `"field_offices"`, `"state"`, `"region"`).
+
+**Required columns in `df`**
+- `snapshot_date`
+- `uid`
+- `geography` (column specified by the `geography` argument)
+
+**Output**
+- `pd.DataFrame` with columns:
+  - `snapshot_date`
+  - `<geography>` (the chosen category column)
+  - `listings` (unique listing count per category per snapshot)
+  - `share` (`listings` divided by total listings for that snapshot)
+
+**Interpretation**
+- `share` allows comparisons across time even if the total number of listings changes.
+
+**Important limitation**
+- As written, the function assumes true snapshot data is available via `snapshot_date`.
+
+---
+
+### RQ3 — `reward_by_crime_type(df: pd.DataFrame) -> pd.DataFrame`
+
+**Research question**  
+What types of crimes receive the highest reward amounts?
+
+**Purpose**  
+Summarizes reward amounts by crime “type” using the `subjects` field as the crime-type label. Subject lists are exploded so each listing can contribute to multiple categories without double-counting within a category.
+
+**Required columns in `df`**
+- `uid`
+- `subjects` (list-like or str): Crime-type tags
+- `reward_has_amount` (bool): Indicates whether a numeric reward amount was parsed
+- `reward_amount_max_usd` (numeric): Maximum stated reward in USD (parsed)
+
+**Output**
+- `pd.DataFrame` with columns:
+  - `crime_type`
+  - `median_reward`
+  - `mean_reward`
+  - `max_reward`
+  - `listings` (number of `(uid, crime_type)` pairs contributing)
+
+**Interpretation**
+- `median_reward` is typically the most robust summary for comparing crime types because reward distributions can be highly skewed.
+
+---
+
+## Helpers
+
+### `_to_datetime_series(s: pd.Series) -> pd.Series`
+
+**Purpose**  
+Safely converts a series to datetime using `errors="coerce"` and `utc=True`.
+
+**Input**
+- `s` (pd.Series)
+
+**Output**
+- `pd.Series` of datetimes (invalid parses become `NaT`)
+
+---
+
+### `_add_time_grain(df: pd.DataFrame, date_col: str, freq: str = "M") -> pd.DataFrame`
+
+**Purpose**  
+Adds a `period` column that bins a datetime column into a specified frequency (day/week/month/quarter/year), then converts it to a timestamp (start of period).
+
+**Inputs**
+- `df` (pd.DataFrame)
+- `date_col` (str): Name of date column to transform (commonly `"publication"`)
+- `freq` (str): Pandas period frequency (default `"M"`)
+
+**Output**
+- Copy of `df` with a new `period` column.
+
+**Notes**
+- If `date_col` is missing, `period` is set to `NaT`.
+
+---
+
+### `_safe_first_subject(x) -> str`
+
+**Purpose**  
+Returns the first subject tag if available; otherwise returns `"Unknown"`.
+
+---
+
+### `_ensure_reward_cols(df: pd.DataFrame) -> None`
+
+**Purpose**  
+Validates that reward parsing columns exist (expected to be created during cleaning). Raises a clear error if missing.
+
+**Required reward columns**
+- `reward_has_text`
+- `reward_has_amount`
+- `reward_amount_max_usd`
+- `reward_program`
+
+---
+
+## RQ4 — Priority/Interpretation Functions
+
+These functions support the interpretation question:
+
+> What do trends in rewards and quantity of wanted persons reveal about law enforcement priorities?
+
+They are designed to work with the **current API dataset** using `publication` as the time anchor (unless you later build true snapshots).
+
+---
+
+### `rq4_volume_trend(df: pd.DataFrame, date_col: str = "publication", freq: str = "M") -> pd.DataFrame`
+
+**Purpose**  
+Computes the number of listings over time by aggregating a date column into time periods.
+
+**Inputs**
+- `df` (pd.DataFrame)
+- `date_col` (str): Date column to use (default `"publication"`)
+- `freq` (str): Time bin frequency (default `"M"`)
+
+**Output**
+- `pd.DataFrame` with columns:
+  - `period`
+  - `listings` (count of rows per period)
+
+**Interpretation**
+- Shows when currently active listings were published (publication-date trend), not the historical active-list size unless snapshot data is used.
+
+---
+
+### `rq4_reward_trend(df: pd.DataFrame, date_col: str = "publication", freq: str = "M") -> pd.DataFrame`
+
+**Purpose**  
+Summarizes reward presence and reward magnitude over time.
+
+**Inputs**
+- `df` (pd.DataFrame)
+- `date_col` (str): Date column to use (default `"publication"`)
+- `freq` (str): Time bin frequency (default `"M"`)
+
+**Required columns**
+- `publication` (or chosen `date_col`)
+- reward parsing columns enforced by `_ensure_reward_cols`
+
+**Output**
+- `pd.DataFrame` with columns:
+  - `period`
+  - `listings`
+  - `pct_with_reward_text`
+  - `pct_with_numeric_reward`
+  - `median_reward_max_usd`
+  - `p90_reward_max_usd`
+  - `max_reward_max_usd`
+
+**Interpretation**
+- Reward percentages indicate how often rewards are used.
+- Median/p90/max reward show how reward magnitude changes across publication periods.
+
+---
+
+### `rq4_priority_by_subject(df: pd.DataFrame, top_n: int = 15) -> pd.DataFrame`
+
+**Purpose**  
+Ranks subject categories using:
+- how often they appear,
+- how often they include numeric rewards,
+- typical reward size (median reward among numeric rewards).
+
+**Inputs**
+- `top_n` (int): Number of top subjects to return.
+
+**Output**
+- `pd.DataFrame` with columns:
+  - `subject`
+  - `listings`
+  - `pct_numeric_reward`
+  - `median_reward_max_usd`
+
+**Interpretation**
+- Useful for connecting “crime type” with both frequency and reward intensity.
+
+---
+
+### `rq4_priority_by_program(df: pd.DataFrame) -> pd.DataFrame`
+
+**Purpose**  
+Summarizes reward patterns by reward program (e.g., FBI programs vs other reward initiatives).
+
+**Output**
+- `pd.DataFrame` with columns:
+  - `reward_program`
+  - `listings_with_text`
+  - `listings_with_amount`
+  - `median_reward_max_usd`
+  - `max_reward_max_usd`
+
+**Interpretation**
+- Helps explain whether high rewards come from specific reward programs.
+
+---
+
+### `rq4_priority_by_field_office(df: pd.DataFrame, top_n: int = 15) -> pd.DataFrame`
+
+**Purpose**  
+Shows which field offices have the most listings and whether those listings tend to have numeric rewards and higher reward magnitudes.
+
+**Key behavior**
+- Handles `field_offices` values that may be lists by normalizing to lists and exploding.
+
+**Output**
+- `pd.DataFrame` with columns:
+  - `field_office`
+  - `listings`
+  - `pct_numeric_reward`
+  - `median_reward_max_usd`
+
+**Interpretation**
+- Useful for comparing geographic concentration with reward intensity.
+
+---
+
+## Recommended Usage in Streamlit
+
+A typical workflow is:
+
+1. Fetch + clean:
+   - `df_raw = fetch_current_wanted(...)`
+   - `df = clean_wanted(df_raw)`
+
+2. Produce summary tables:
+   - `reward_by_crime_type(df)`
+   - `rq4_volume_trend(df)`
+   - `rq4_reward_trend(df)`
+   - `rq4_priority_by_subject(df)`
+   - `rq4_priority_by_field_office(df)`
+
+3. Visualize:
+   - Line charts for trends (`rq4_volume_trend`, `rq4_reward_trend`)
+   - Bar charts for top categories (`reward_by_crime_type`, priority tables)
+
+---

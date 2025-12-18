@@ -73,7 +73,7 @@ All summary tables and figures are generated directly from the cleaned dataset a
 
 ## Discussion & Next Steps
 
-These findings suggest that FBI reward structures emphasize prioritization of high-risk or high-impact cases rather than broad coverage. However, the analysis is limited by the lack of historical snapshots of the wanted list; true longitudinal conclusions about changes in enforcement focus require archived or regularly collected snapshots over time. Future work could incorporate Wayback Machine data or scheduled data collection to enable a fully historical analysis, as well as external data sources to contextualize findings by population or crime rates.
+These findings suggest that FBI reward structures emphasize prioritization of high-risk or high-impact cases rather than broad coverage. However, the analysis is limited by the lack of historical snapshots of the wanted list; true longitudinal conclusions about changes in enforcement focus require archived or regularly collected snapshots over time. Future work could incorporate Wayback Machine data or scheduled data collection to enable a fully historical analysis, as well as external data sources to contextualize findings by population or crime rates. For this project, usage of the Wayback Machine was considered, however, it was deemed too challenging to implement in an efficient way for a Stat386 student. The process of scraping data was achievable, but it would require manual entries of the URLs for each fugitive rather than the utilizing the pagination system used in the API data gathering.
 
 ---
 
