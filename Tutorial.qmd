@@ -1,20 +1,444 @@
 ---
-title: "Getting Started"
+title: "Getting Started with fbi_wanted_analysis"
+format: html
 jupyter: python3
 ---
 
-Here is how you use my package:
+This tutorial walks you through how to install `fbi_wanted_analysis`, pull live data from the FBI Wanted API, clean it, and run the core analysis functions that answer the four research questions for the project.
 
-```{python}
-from final_project_demo import add
+We will:
 
-print(add(2, 19))
+1. Install the package
+2. Pull and inspect raw data
+3. Clean and enrich the data (including reward parsing)
+4. Run research question helper functions
+5. See how this connects to the Streamlit app
+
+---
+
+## 1. Installation
+
+You can install the package either with `uv` or with `pip`, depending on your workflow.
+
+### 1.1 Install with `uv`
+
+From a terminal in your project folder:
+
+```bash
+uv add fbi-wanted-analysis
 ```
 
+`uv` will resolve and install:
+
+- `fbi-wanted-analysis`
+- `pandas`
+- `numpy`
+- `requests`
+- `streamlit`
+- and other dependencies
+
+### 1.2 Install with `pip`
+
+If you prefer `pip`:
+
+```bash
+pip install fbi-wanted-analysis
+```
+
+Then you are ready to import the package in Python or Jupyter.
+
+---
+
+## 2. Package overview
+
+The package has three main modules:
+
+- `fbi_wanted_analysis.__init__`
+  - Re-exports the most important entry points:
+    - `fetch_current_wanted`
+    - `clean_wanted`
+- `fbi_wanted_analysis.cleaning`
+  - Functions to clean and normalize the raw FBI API data
+  - Applies reward parsing from `rewards.py`
+- `fbi_wanted_analysis.analysis`
+  - Functions for answering the four research questions using pandas
+
+The core workflow:
+
+1. Use `fetch_current_wanted()` to call the FBI Wanted API and return a raw `DataFrame`.
+2. Pass that `DataFrame` into `clean_wanted()` to add parsed reward fields and normalize columns.
+3. Use the analysis helpers from `analysis.py` to create summary tables for each research question.
+
+---
+
+## 3. First import and basic usage
+
+Start by importing from the top-level package and pulling a small sample.
 
 ```{python}
-from final_project_demo import run_analysis_pipeline, run_cleaning_pipeling
+from fbi_wanted_analysis import fetch_current_wanted, clean_wanted
 
-run_cleaning_pipeling()
-run_analysis_pipeline()
+# Pull the first page of results (50 records)
+raw = fetch_current_wanted(page_size=50, pages=1)
+
+raw.shape
 ```
+
+You should see something like `(N, K)` where `N` is the number of rows and `K` is the number of columns.
+
+Inspect the first few rows:
+
+```{python}
+raw.head()
+```
+
+The raw `DataFrame` includes columns such as:
+
+- `uid`
+- `title`
+- `publication` (string or timestamp)
+- `field_offices`
+- `sex`
+- `race`
+- `subjects`
+- `reward_text`
+- `caution`
+- `details`
+
+---
+
+## 4. Cleaning and reward parsing
+
+Next, run the cleaning pipeline. This function:
+
+- Converts `publication` into a proper datetime
+- Normalizes `field_offices` into a consistent string
+- Parses `reward_text` into numeric and categorical fields using `parse_reward` from `rewards.py`
+
+```{python}
+clean = clean_wanted(raw)
+clean.head()
+```
+
+After cleaning, you should see additional columns such as:
+
+- `reward_text_clean`
+- `reward_has_text` (True/False)
+- `reward_has_amount` (True/False)
+- `reward_amounts_usd` (list of ints)
+- `reward_amount_min_usd` (int or NA)
+- `reward_amount_max_usd` (int or NA)
+- `reward_is_up_to` (True/False)
+- `reward_mentions_additional` (True/False)
+- `reward_program` (for example: `"FBI"`, `"Rewards for Justice"`, `"Other/Unknown"`)
+
+You can quickly check the distribution of reward programs:
+
+```{python}
+clean["reward_program"].value_counts().head()
+```
+
+---
+
+## 5. Analysis helpers and research questions
+
+To run the analysis helpers, import them from the `analysis` module.
+
+```{python}
+from fbi_wanted_analysis.analysis import (
+    quantity_over_time,
+    geographic_concentration_over_time,
+    reward_by_crime_type,
+    rq4_volume_trend,
+    rq4_reward_trend,
+    rq4_priority_by_subject,
+    rq4_priority_by_program,
+    rq4_priority_by_field_office,
+)
+```
+
+Below we assume you already have a cleaned `DataFrame` named `clean`.
+
+```{python}
+clean = clean_wanted(fetch_current_wanted(page_size=200, pages=3))
+clean.shape
+```
+
+### 5.1 RQ1: Volume trend over time
+
+**Research Question 1**
+> How does the quantity of most wanted cases change over time?
+
+Simplest option: you can use `rq4_volume_trend` on the publication date, aggregated by month.
+
+```{python}
+import matplotlib.pyplot as plt
+
+volume = rq4_volume_trend(clean, date_col="publication", freq="M")
+volume.head()
+```
+
+Columns:
+
+- `period`: start of the period (for example, first day of the month)
+- `listings`: number of listings in that period
+
+Plot it:
+
+```{python}
+plt.figure()
+plt.plot(volume["period"], volume["listings"])
+plt.xticks(rotation=45)
+plt.ylabel("Listings")
+plt.title("Number of FBI Wanted Listings Over Time")
+plt.tight_layout()
+```
+
+This gives a quick visual of whether the posting volume is stable, rising, or clustered in specific months.
+
+If you want to work directly with snapshots and a `snapshot_date` column, you can also use `quantity_over_time()` instead of `rq4_volume_trend()` as long as your data frame includes that column.
+
+---
+
+### 5.2 RQ2: Geographic concentration
+
+**Research Question 2**
+> Which U.S. regions, states, or FBI field offices have the highest concentration of wanted cases, and how has this distribution shifted historically?
+
+The `analysis.py` module includes a general helper, `geographic_concentration_over_time`, that expects a `snapshot_date` column and a geography column such as `field_office` or `state`. For simple work with the current pull, it is often easiest to summarize field offices directly from the cleaned data.
+
+Because `clean_wanted` stores `field_offices` as a comma separated string, you can split and explode it to count offices.
+
+```{python}
+geo_df = clean.copy()
+
+# Split comma separated field_offices into rows
+geo_df["field_offices_list"] = geo_df["field_offices"].fillna("").astype(str).str.split(",")
+geo_df = geo_df.explode("field_offices_list")
+geo_df["field_offices_list"] = geo_df["field_offices_list"].str.strip()
+geo_df = geo_df[geo_df["field_offices_list"] != ""]
+
+# Top offices by count
+top_offices = geo_df["field_offices_list"].value_counts().head(15)
+top_offices
+```
+
+You can also combine this with time information by grouping on both `publication` and `field_offices_list` if you want a time series for each office.
+
+```{python}
+geo_df["publication_month"] = geo_df["publication"].dt.to_period("M").dt.to_timestamp()
+office_time = (
+    geo_df.groupby(["publication_month", "field_offices_list"])["uid"]
+    .nunique()
+    .reset_index(name="listings")
+)
+office_time.head()
+```
+
+You can then filter to a specific office of interest and plot its trend over time.
+
+---
+
+### 5.3 RQ3: Reward amounts by crime type
+
+**Research Question 3**
+> What types of crimes receive the highest reward amounts?
+
+Use `reward_by_crime_type` on the cleaned data.
+
+```{python}
+rq3 = reward_by_crime_type(clean)
+rq3.head(10)
+```
+
+This returns:
+
+- `crime_type`: FBI subject tag
+- `median_reward`: median of `reward_amount_max_usd`
+- `mean_reward`: mean of `reward_amount_max_usd`
+- `max_reward`: maximum of `reward_amount_max_usd`
+- `listings`: number of listings that contributed to that row
+
+Look at the top crime types by median reward:
+
+```{python}
+rq3_top = rq3.sort_values("median_reward", ascending=False).head(15)
+rq3_top
+```
+
+Plot the top crime types:
+
+```{python}
+plt.figure()
+plt.barh(rq3_top["crime_type"], rq3_top["median_reward"])
+plt.gca().invert_yaxis()
+plt.xlabel("Median Reward (USD)")
+plt.title("Top Crime Types by Median Reward")
+plt.tight_layout()
+```
+
+This gives a direct view of which subject tags tend to be associated with higher rewards.
+
+---
+
+### 5.4 RQ4: Trends in rewards and inferred priorities
+
+**Research Question 4**
+> What do trends in rewards and quantity of wanted persons reveal about law enforcement priorities?
+
+For this question the package includes several helper functions that look at:
+
+- Overall volume of listings over time
+- How often rewards are offered
+- How large those rewards are
+- Where higher rewards cluster (by subject, by program, by field office)
+
+#### 5.4.1 Reward trend over time
+
+```{python}
+reward_trend = rq4_reward_trend(clean, date_col="publication", freq="M")
+reward_trend.head()
+```
+
+Columns include:
+
+- `period`
+- `listings`
+- `pct_with_reward_text`
+- `pct_with_numeric_reward`
+- `median_reward_max_usd`
+- `p90_reward_max_usd`
+- `max_reward_max_usd`
+
+You can plot both prevalence and size.
+
+```{python}
+plt.figure()
+plt.plot(reward_trend["period"], reward_trend["pct_with_reward_text"], label="Reward text present")
+plt.plot(reward_trend["period"], reward_trend["pct_with_numeric_reward"], label="Numeric reward present")
+plt.xticks(rotation=45)
+plt.ylabel("Percent of listings")
+plt.title("Reward Prevalence Over Time")
+plt.legend()
+plt.tight_layout()
+```
+
+```{python}
+plt.figure()
+plt.plot(reward_trend["period"], reward_trend["median_reward_max_usd"], label="Median")
+plt.plot(reward_trend["period"], reward_trend["p90_reward_max_usd"], label="P90")
+plt.plot(reward_trend["period"], reward_trend["max_reward_max_usd"], label="Max")
+plt.xticks(rotation=45)
+plt.ylabel("Reward max amount (USD)")
+plt.title("Reward Size Over Time")
+plt.legend()
+plt.tight_layout()
+```
+
+This lets you compare how many cases have rewards and how large those rewards are across time.
+
+#### 5.4.2 Priority by subject
+
+```{python}
+priority_subject = rq4_priority_by_subject(clean, top_n=15)
+priority_subject
+```
+
+Columns:
+
+- `subject`
+- `listings`
+- `pct_numeric_reward`
+- `median_reward_max_usd`
+
+This gives a simple proxy for “priority” by subject. Subjects that appear often and have higher numeric rewards look like higher priority categories in the data.
+
+#### 5.4.3 Priority by program
+
+```{python}
+priority_program = rq4_priority_by_program(clean)
+priority_program
+```
+
+Columns:
+
+- `reward_program`
+- `listings_with_text`
+- `listings_with_amount`
+- `median_reward_max_usd`
+- `max_reward_max_usd`
+
+This is useful if you want to compare things like:
+
+- How many cases use FBI rewards
+- How many involve “Rewards for Justice”
+- How large the rewards tend to be for each program
+
+#### 5.4.4 Priority by field office
+
+```{python}
+priority_office = rq4_priority_by_field_office(clean, top_n=15)
+priority_office
+```
+
+Columns:
+
+- `field_office`
+- `listings`
+- `pct_numeric_reward`
+- `median_reward_max_usd`
+
+Here you can see which field offices:
+
+- Have the most listings in your pull
+- Have higher rates of numeric rewards
+- Tend to have higher reward levels
+
+You might pair this with maps or external context, but the function itself gives you a solid starting point.
+
+---
+
+## 6. Using the package with the Streamlit app
+
+The repo also includes a `streamlit_app.py` file that builds an interactive dashboard on top of the same functions you have used here.
+
+In a terminal, from the project root, run:
+
+```bash
+streamlit run src/fbi_wanted_analysis/streamlit_app.py
+```
+
+The app will:
+
+- Fetch and clean data using `fetch_current_wanted` and `clean_wanted`
+- Let you filter by title, field office, sex, race, subjects, and reward presence
+- Show:
+
+  - Overview metrics and a data preview
+  - Volume over time (RQ1)
+  - Concentration by field office (RQ2)
+  - Reward amounts by crime type (RQ3)
+  - Reward and volume trends, plus priority tables (RQ4)
+
+You can compare the results you see in this notebook with the interactive charts in the app. Both use the same underlying functions.
+
+---
+
+## 7. Summary
+
+The `fbi_wanted_analysis` package gives you:
+
+- A simple API wrapper: `fetch_current_wanted`
+- A cleaning pipeline: `clean_wanted`
+- Reward parsing logic: `parse_reward` used inside the cleaning step
+- Analysis helpers for:
+  - Volume over time
+  - Crime types and rewards
+  - Reward trends and inferred enforcement priorities
+
+You can use it either in scripts and notebooks or through the Streamlit dashboard. For most custom analysis, the pattern is:
+
+1. Fetch
+2. Clean
+3. Call one or more helper functions
+4. Visualize or export the results
