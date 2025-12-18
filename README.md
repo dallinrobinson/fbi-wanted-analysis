@@ -1,31 +1,82 @@
-# final-project-demo
+# fbi-wanted-analysis
 
-Teaching scaffold for STAT 386 final projects. The repository bundles a Python package, Quarto site, automated tests, and a customizable Streamlit prototype.
+A Python package for retrieving, cleaning, and analyzing data from the FBI Wanted API. This package streamlines FBI dataset exploration into a simple workflow: download → clean → analyze.
 
-## Quick start
+## Features
 
-```bash
-uv sync
-uv run pytest
-```
+- Live retrieval from the official FBI Wanted API
+- Automated cleaning of publication dates, field office data, and reward text
+- Reward parsing into consistent numeric values (USD)
+- Analysis functions for exploring:
+  - reward trends
+  - geographic patterns
+  - crime subject comparisons
+  - time-series volume patterns
 
-## Streamlit prototype
-
-- Edit `src/final_project_demo/streamlit_app.py` to point at your own data sources, cleaning logic, and visuals.
-- Launch the toy UI with:
-
-```bash
-uv run streamlit run src/final_project_demo/streamlit_app.py
-```
-
-- Use the sidebar toggles to preview how `run_cleaning_pipeling` and `run_analysis_pipeline` outputs appear, then replace them with real charts or KPIs.
-
-## Quarto site
-
-Rebuild the public site (including the technical report placeholder) with:
+## Installation
 
 ```bash
-uv run quarto render
+pip install fbi-wanted-analysis
 ```
 
-Serve locally via `uv run quarto preview` while authoring docs.
+## Quick Start
+
+```python
+from fbi_wanted_analysis import fetch_current_wanted, clean_wanted
+
+# Pull current FBI wanted data (up to 200 items per page)
+df = fetch_current_wanted(pages=2)
+
+# Clean and parse
+cleaned = clean_wanted(df)
+
+print(cleaned.head())
+```
+
+## Example: Reward amounts by crime type
+
+```python
+from fbi_wanted_analysis import fetch_current_wanted, clean_wanted
+from fbi_wanted_analysis.analysis import reward_by_crime_type
+
+df = clean_wanted(fetch_current_wanted(pages=4))
+summary = reward_by_crime_type(df)
+
+print(summary.head())
+```
+
+## Project Purpose
+
+This package supports statistical exploration, reproducible reporting, and real-world data analysis. It is also used in a Streamlit dashboard that visualizes reward intensity, volume patterns over time, crime subject distribution, and field-office concentration.
+
+## Contents
+
+Main modules:
+
+- `analysis.py` — analytical methods for research questions
+- `cleaning.py` — parses and normalizes raw FBI data
+- `rewards.py` — extracts numeric dollar values from reward text
+
+The package exposes:
+
+```python
+from fbi_wanted_analysis import fetch_current_wanted, clean_wanted
+```
+
+## Requirements
+
+Python 3.11+
+
+Dependencies:
+- pandas
+- numpy
+- streamlit
+- requests
+
+## Authors
+
+Created by Dallin Robinson and Michael Stutzman
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
