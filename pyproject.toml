@@ -4,7 +4,7 @@ build-backend = "uv_build"
 
 [project]
 name = "fbi-wanted-analysis"
-version = "0.1.0"
+version = "0.2.0"
 description = "STAT 386 project: analysis of FBI Wanted listings using the FBI Wanted API."
 readme = "README.md"
 requires-python = ">=3.11"
